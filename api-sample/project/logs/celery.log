@@ -1,0 +1,673 @@
+[2021-04-28 00:05:19,597: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 00:05:19,608: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 00:05:19,953: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 00:05:19,967: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 00:05:20,119: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 00:05:20,144: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 00:05:20,633: INFO/MainProcess] mingle: all alone
+[2021-04-28 00:05:20,645: INFO/MainProcess] celery@a865f2ead314 ready.
+[2021-04-28 00:05:20,647: INFO/MainProcess] Received task: create_task[083b9fa9-fec7-409f-bd0b-b3caeba22b3d]  
+[2021-04-28 00:05:20,649: INFO/MainProcess] Received task: create_task[42857f12-db5f-458d-b92b-4a47228dd6d1]  
+[2021-04-28 00:05:20,651: INFO/MainProcess] Received task: create_task[26de563a-e559-4c70-bf2c-675f5c410c70]  
+[2021-04-28 00:05:20,652: INFO/MainProcess] Received task: create_task[9b6ff4e2-5407-425c-975d-17786c92cd64]  
+[2021-04-28 00:05:20,655: INFO/MainProcess] Received task: create_task[6c10d649-f503-491f-96f9-407d0a67b372]  
+[2021-04-28 00:05:20,656: INFO/MainProcess] Received task: create_task[0802933f-039f-4ccc-a8f8-5a2338908ad4]  
+[2021-04-28 00:05:20,657: INFO/MainProcess] Received task: create_task[72a72654-6bfe-4b5c-8a0f-7d91deb91c88]  
+[2021-04-28 00:05:20,658: INFO/MainProcess] Received task: create_task[cf15ae73-6940-46d1-be33-d94923daa432]  
+[2021-04-28 00:05:20,659: INFO/MainProcess] Received task: create_task[aac42dc8-4401-413c-947e-9ac86edadb11]  
+[2021-04-28 00:05:20,660: INFO/MainProcess] Received task: create_task[ed699894-4083-4c8f-b3c8-ca4c492fbb6c]  
+[2021-04-28 00:05:20,664: INFO/MainProcess] Received task: create_task[5c155251-7594-40be-92a8-2d88d153d87e]  
+[2021-04-28 00:05:20,665: INFO/MainProcess] Received task: create_task[d4038c8f-1172-45a3-a496-71757dc2cc05]  
+[2021-04-28 00:05:20,666: INFO/MainProcess] Received task: create_task[4d322500-7f73-467c-87e5-ddb53a149122]  
+[2021-04-28 00:05:20,667: INFO/MainProcess] Received task: create_task[a6daeb28-6d0b-4dd1-90eb-5954157368c3]  
+[2021-04-28 00:05:20,668: INFO/MainProcess] Received task: create_task[f672dd84-940a-494e-9501-e7cc75da24a8]  
+[2021-04-28 00:05:20,669: INFO/MainProcess] Received task: create_task[cdcc9ad6-d081-4bad-80b0-ebe46bbc8383]  
+[2021-04-28 00:05:20,670: INFO/MainProcess] Received task: create_task[74d6c201-fe53-4969-8e7e-3e972535d060]  
+[2021-04-28 00:05:20,671: INFO/MainProcess] Received task: create_task[70322ef5-769d-4871-95f8-cc2cd45f65c5]  
+[2021-04-28 00:05:20,999: INFO/MainProcess] mingle: all alone
+[2021-04-28 00:05:21,009: INFO/MainProcess] celery@01f5b507b934 ready.
+[2021-04-28 00:05:21,171: INFO/MainProcess] mingle: all alone
+[2021-04-28 00:05:21,183: INFO/MainProcess] celery@78984e8bfdf0 ready.
+[2021-04-28 00:05:25,863: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 00:05:25,863: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 00:05:25,864: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 00:05:30,662: INFO/ForkPoolWorker-1] Task create_task[083b9fa9-fec7-409f-bd0b-b3caeba22b3d] succeeded in 10.013578785583377s: True
+[2021-04-28 00:05:30,663: INFO/ForkPoolWorker-4] Task create_task[9b6ff4e2-5407-425c-975d-17786c92cd64] succeeded in 10.009683995507658s: True
+[2021-04-28 00:05:30,667: INFO/ForkPoolWorker-2] Task create_task[26de563a-e559-4c70-bf2c-675f5c410c70] succeeded in 10.01333627384156s: True
+[2021-04-28 00:05:30,668: INFO/ForkPoolWorker-1] Task create_task[6c10d649-f503-491f-96f9-407d0a67b372] succeeded in 0.0023264968767762184s: True
+[2021-04-28 00:05:40,679: INFO/ForkPoolWorker-1] Task create_task[72a72654-6bfe-4b5c-8a0f-7d91deb91c88] succeeded in 10.009086736477911s: True
+[2021-04-28 00:05:40,679: INFO/ForkPoolWorker-2] Task create_task[cf15ae73-6940-46d1-be33-d94923daa432] succeeded in 10.009354865178466s: True
+[2021-04-28 00:05:45,933: INFO/MainProcess] Received task: create_task[de6396a9-aac6-49ee-a4e9-edcc3b557dcb]  
+[2021-04-28 00:05:50,664: INFO/ForkPoolWorker-3] Task create_task[42857f12-db5f-458d-b92b-4a47228dd6d1] succeeded in 30.014431800693274s: True
+[2021-04-28 00:05:50,677: INFO/ForkPoolWorker-4] Task create_task[0802933f-039f-4ccc-a8f8-5a2338908ad4] succeeded in 20.012228134088218s: True
+[2021-04-28 00:05:50,684: INFO/ForkPoolWorker-2] Task create_task[ed699894-4083-4c8f-b3c8-ca4c492fbb6c] succeeded in 10.003058990463614s: True
+[2021-04-28 00:05:50,684: INFO/ForkPoolWorker-1] Task create_task[aac42dc8-4401-413c-947e-9ac86edadb11] succeeded in 10.003194359131157s: True
+[2021-04-28 00:05:55,948: INFO/ForkPoolWorker-1] Task create_task[de6396a9-aac6-49ee-a4e9-edcc3b557dcb] succeeded in 10.012851009145379s: True
+[2021-04-28 00:06:00,672: INFO/ForkPoolWorker-3] Task create_task[5c155251-7594-40be-92a8-2d88d153d87e] succeeded in 10.006021402776241s: True
+[2021-04-28 00:06:00,682: INFO/ForkPoolWorker-4] Task create_task[d4038c8f-1172-45a3-a496-71757dc2cc05] succeeded in 10.003360219299793s: True
+[2021-04-28 00:06:00,689: INFO/ForkPoolWorker-1] Task create_task[4d322500-7f73-467c-87e5-ddb53a149122] succeeded in 10.003724656999111s: True
+[2021-04-28 00:06:00,696: INFO/ForkPoolWorker-2] Task create_task[a6daeb28-6d0b-4dd1-90eb-5954157368c3] succeeded in 10.010560500435531s: True
+[2021-04-28 00:06:10,684: INFO/ForkPoolWorker-3] Task create_task[f672dd84-940a-494e-9501-e7cc75da24a8] succeeded in 10.009409400634468s: True
+[2021-04-28 00:06:10,692: INFO/ForkPoolWorker-4] Task create_task[cdcc9ad6-d081-4bad-80b0-ebe46bbc8383] succeeded in 10.008630354888737s: True
+[2021-04-28 00:06:10,701: INFO/ForkPoolWorker-1] Task create_task[74d6c201-fe53-4969-8e7e-3e972535d060] succeeded in 10.010623349808156s: True
+[2021-04-28 00:06:30,702: INFO/ForkPoolWorker-2] Task create_task[70322ef5-769d-4871-95f8-cc2cd45f65c5] succeeded in 30.004232180304825s: True
+[2021-04-28 00:07:24,535: INFO/MainProcess] Received task: create_task[1f029e73-0fb3-4849-8b9b-1ee8f5227b57]  
+[2021-04-28 00:07:44,545: INFO/ForkPoolWorker-1] Task create_task[1f029e73-0fb3-4849-8b9b-1ee8f5227b57] succeeded in 20.006865367293358s: True
+[2021-04-28 00:12:02,181: INFO/MainProcess] Received task: create_task[1c1b5434-3651-4661-b64d-7f435138922e]  
+[2021-04-28 00:12:12,186: INFO/ForkPoolWorker-1] Task create_task[1c1b5434-3651-4661-b64d-7f435138922e] succeeded in 10.002517584711313s: True
+[2021-04-28 00:12:57,510: INFO/MainProcess] Received task: create_task[a3ca3fe2-615e-4efb-932e-a08de7fbf9a1]  
+[2021-04-28 00:13:05,528: INFO/MainProcess] Received task: create_task[65f0033a-ccd2-4bfc-8790-3cefc597f40c]  
+[2021-04-28 00:13:07,518: INFO/ForkPoolWorker-1] Task create_task[a3ca3fe2-615e-4efb-932e-a08de7fbf9a1] succeeded in 10.004917387850583s: True
+[2021-04-28 00:13:15,548: INFO/ForkPoolWorker-3] Task create_task[65f0033a-ccd2-4bfc-8790-3cefc597f40c] succeeded in 10.016394032165408s: True
+[2021-04-28 01:42:51,449: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 01:42:51,469: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 01:42:51,501: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 01:42:51,519: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 01:42:51,520: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 01:42:51,535: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 01:42:52,508: INFO/MainProcess] mingle: all alone
+[2021-04-28 01:42:52,522: INFO/MainProcess] celery@5714850576ad ready.
+[2021-04-28 01:42:52,548: INFO/MainProcess] mingle: all alone
+[2021-04-28 01:42:52,565: INFO/MainProcess] celery@b343180d4996 ready.
+[2021-04-28 01:42:52,570: INFO/MainProcess] mingle: all alone
+[2021-04-28 01:42:52,594: INFO/MainProcess] celery@6ed749fc874b ready.
+[2021-04-28 01:42:57,439: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 01:42:57,439: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 01:42:57,440: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 01:44:16,022: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 01:44:16,037: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 01:44:16,071: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 01:44:16,084: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 01:44:16,138: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 01:44:16,151: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 01:44:17,079: INFO/MainProcess] mingle: all alone
+[2021-04-28 01:44:17,093: INFO/MainProcess] celery@3e167ae8b961 ready.
+[2021-04-28 01:44:17,113: INFO/MainProcess] mingle: all alone
+[2021-04-28 01:44:17,134: INFO/MainProcess] celery@f30d60377840 ready.
+[2021-04-28 01:44:17,179: INFO/MainProcess] mingle: all alone
+[2021-04-28 01:44:17,193: INFO/MainProcess] celery@17d6aa8cb8ec ready.
+[2021-04-28 01:44:21,962: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 01:44:21,962: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 01:44:21,963: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 01:44:55,621: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 01:44:55,636: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 01:44:56,662: INFO/MainProcess] mingle: all alone
+[2021-04-28 01:44:56,677: INFO/MainProcess] celery@f46ac5e9ca63 ready.
+[2021-04-28 01:45:00,894: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 01:46:26,346: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 01:46:26,362: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 01:46:27,392: INFO/MainProcess] mingle: all alone
+[2021-04-28 01:46:27,406: INFO/MainProcess] celery@50021dded16b ready.
+[2021-04-28 01:46:31,730: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 01:47:50,012: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 01:47:50,031: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 01:47:51,063: INFO/MainProcess] mingle: all alone
+[2021-04-28 01:47:51,076: INFO/MainProcess] celery@dfe8f45c03bc ready.
+[2021-04-28 01:47:55,190: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 01:51:06,961: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 01:51:06,974: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 01:51:08,007: INFO/MainProcess] mingle: all alone
+[2021-04-28 01:51:08,019: INFO/MainProcess] celery@5f299f241ff5 ready.
+[2021-04-28 01:51:12,173: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 01:53:43,291: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 01:53:43,306: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 01:53:44,331: INFO/MainProcess] mingle: all alone
+[2021-04-28 01:53:44,342: INFO/MainProcess] celery@b28030242803 ready.
+[2021-04-28 01:53:48,428: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 01:56:47,679: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 01:56:47,690: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 01:56:48,715: INFO/MainProcess] mingle: all alone
+[2021-04-28 01:56:48,732: INFO/MainProcess] celery@98b60649fd79 ready.
+[2021-04-28 01:56:51,027: INFO/MainProcess] Received task: create_task[462f95c2-5047-4832-9896-1198546acf7f]  
+[2021-04-28 01:56:52,900: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 01:58:17,750: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 01:58:17,763: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 01:58:18,792: INFO/MainProcess] mingle: all alone
+[2021-04-28 01:58:18,805: INFO/MainProcess] celery@d144976180b4 ready.
+[2021-04-28 01:58:23,050: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 01:59:06,767: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 01:59:06,780: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 01:59:07,805: INFO/MainProcess] mingle: all alone
+[2021-04-28 01:59:07,816: INFO/MainProcess] celery@f07531762427 ready.
+[2021-04-28 01:59:09,749: INFO/MainProcess] Received task: create_task[00f4937f-6590-4b0e-b431-50a7843859f9]  
+[2021-04-28 01:59:12,057: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 02:00:43,525: INFO/MainProcess] Received task: create_task[780e858e-ae0b-4f36-945e-fb115b302f56]  
+[2021-04-28 02:00:44,830: INFO/MainProcess] Received task: create_task[7b9cc6ba-2547-47e0-856e-877582e440a7]  
+[2021-04-28 02:00:45,732: INFO/MainProcess] Received task: create_task[532b7703-1ac7-4fa2-a0e5-b2729dde5696]  
+[2021-04-28 02:00:46,446: INFO/MainProcess] Received task: create_task[f54da10a-e44a-4f60-aec5-2c6dc167b7ba]  
+[2021-04-28 02:00:49,844: WARNING/ForkPoolWorker-1] /usr/local/lib/python3.9/site-packages/celery/app/trace.py:622: RuntimeWarning: Exception raised outside body: TypeError('callback_task() takes 1 positional argument but 2 were given'):
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 1 positional argument but 2 were given
+
+  warn(RuntimeWarning(
+[2021-04-28 02:00:49,849: ERROR/ForkPoolWorker-1] Task create_task[00f4937f-6590-4b0e-b431-50a7843859f9] raised unexpected: TypeError('callback_task() takes 1 positional argument but 2 were given')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 1 positional argument but 2 were given
+[2021-04-28 02:02:23,614: WARNING/ForkPoolWorker-3] /usr/local/lib/python3.9/site-packages/celery/app/trace.py:622: RuntimeWarning: Exception raised outside body: TypeError('callback_task() takes 1 positional argument but 2 were given'):
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 1 positional argument but 2 were given
+
+  warn(RuntimeWarning(
+[2021-04-28 02:02:23,618: ERROR/ForkPoolWorker-3] Task create_task[780e858e-ae0b-4f36-945e-fb115b302f56] raised unexpected: TypeError('callback_task() takes 1 positional argument but 2 were given')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 1 positional argument but 2 were given
+[2021-04-28 02:02:24,909: WARNING/ForkPoolWorker-2] /usr/local/lib/python3.9/site-packages/celery/app/trace.py:622: RuntimeWarning: Exception raised outside body: TypeError('callback_task() takes 1 positional argument but 2 were given'):
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 1 positional argument but 2 were given
+
+  warn(RuntimeWarning(
+[2021-04-28 02:02:24,914: ERROR/ForkPoolWorker-2] Task create_task[7b9cc6ba-2547-47e0-856e-877582e440a7] raised unexpected: TypeError('callback_task() takes 1 positional argument but 2 were given')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 1 positional argument but 2 were given
+[2021-04-28 02:02:25,823: WARNING/ForkPoolWorker-4] /usr/local/lib/python3.9/site-packages/celery/app/trace.py:622: RuntimeWarning: Exception raised outside body: TypeError('callback_task() takes 1 positional argument but 2 were given'):
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 1 positional argument but 2 were given
+
+  warn(RuntimeWarning(
+[2021-04-28 02:02:25,827: ERROR/ForkPoolWorker-4] Task create_task[532b7703-1ac7-4fa2-a0e5-b2729dde5696] raised unexpected: TypeError('callback_task() takes 1 positional argument but 2 were given')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 1 positional argument but 2 were given
+[2021-04-28 02:02:29,943: ERROR/ForkPoolWorker-1] Task create_task[f54da10a-e44a-4f60-aec5-2c6dc167b7ba] raised unexpected: TypeError('callback_task() takes 1 positional argument but 2 were given')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 1 positional argument but 2 were given
+[2021-04-28 02:09:26,173: INFO/MainProcess] Received task: create_task[5241f75e-4b52-4edc-9c68-c25a1756aa33]  
+[2021-04-28 02:10:25,764: INFO/MainProcess] Received task: create_task[e6cc33ee-fd01-409f-a1d2-5ce48e0009ae]  
+[2021-04-28 02:10:35,770: ERROR/ForkPoolWorker-3] Task create_task[e6cc33ee-fd01-409f-a1d2-5ce48e0009ae] raised unexpected: TypeError('callback_task() takes 1 positional argument but 2 were given')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 1 positional argument but 2 were given
+[2021-04-28 02:11:06,203: ERROR/ForkPoolWorker-1] Task create_task[5241f75e-4b52-4edc-9c68-c25a1756aa33] raised unexpected: TypeError('callback_task() takes 1 positional argument but 2 were given')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 1 positional argument but 2 were given
+[2021-04-28 02:11:34,524: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 02:11:34,537: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 02:11:35,564: INFO/MainProcess] mingle: all alone
+[2021-04-28 02:11:35,578: INFO/MainProcess] celery@7d63fab8b3b1 ready.
+[2021-04-28 02:11:39,768: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 02:11:42,472: INFO/MainProcess] Received task: create_task[7ee84b60-0680-4f98-8dc9-83bdb2e5ce5b]  
+[2021-04-28 02:11:52,487: WARNING/ForkPoolWorker-1] /usr/local/lib/python3.9/site-packages/celery/app/trace.py:622: RuntimeWarning: Exception raised outside body: TypeError('callback_task() takes 1 positional argument but 2 were given'):
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 1 positional argument but 2 were given
+
+  warn(RuntimeWarning(
+[2021-04-28 02:11:52,491: ERROR/ForkPoolWorker-1] Task create_task[7ee84b60-0680-4f98-8dc9-83bdb2e5ce5b] raised unexpected: TypeError('callback_task() takes 1 positional argument but 2 were given')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 1 positional argument but 2 were given
+[2021-04-28 02:12:28,257: INFO/MainProcess] Received task: create_task[09573632-04e4-4444-ba96-cf0ca4390d66]  
+[2021-04-28 02:12:38,272: ERROR/ForkPoolWorker-1] Task create_task[09573632-04e4-4444-ba96-cf0ca4390d66] raised unexpected: TypeError('callback_task() takes 1 positional argument but 2 were given')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 1 positional argument but 2 were given
+[2021-04-28 02:13:11,838: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 02:13:11,850: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 02:13:12,874: INFO/MainProcess] mingle: all alone
+[2021-04-28 02:13:12,886: INFO/MainProcess] celery@45a8094f6798 ready.
+[2021-04-28 02:13:17,057: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 02:13:17,109: INFO/MainProcess] Received task: create_task[2b742db4-4ced-4b91-b194-52647547ee79]  
+[2021-04-28 02:13:27,121: WARNING/ForkPoolWorker-1] /usr/local/lib/python3.9/site-packages/celery/app/trace.py:622: RuntimeWarning: Exception raised outside body: TypeError('callback_task() takes 1 positional argument but 2 were given'):
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 1 positional argument but 2 were given
+
+  warn(RuntimeWarning(
+[2021-04-28 02:13:27,127: ERROR/ForkPoolWorker-1] Task create_task[2b742db4-4ced-4b91-b194-52647547ee79] raised unexpected: TypeError('callback_task() takes 1 positional argument but 2 were given')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 1 positional argument but 2 were given
+[2021-04-28 02:14:07,729: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 02:14:07,740: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 02:14:08,765: INFO/MainProcess] mingle: all alone
+[2021-04-28 02:14:08,778: INFO/MainProcess] celery@0f7c6a402d80 ready.
+[2021-04-28 02:14:12,985: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 02:14:18,282: INFO/MainProcess] Received task: create_task[b4592014-3669-4759-b90b-a1ba08b686a3]  
+[2021-04-28 02:14:28,294: WARNING/ForkPoolWorker-1] /usr/local/lib/python3.9/site-packages/celery/app/trace.py:622: RuntimeWarning: Exception raised outside body: TypeError('callback_task() takes 1 positional argument but 3 were given'):
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 1 positional argument but 3 were given
+
+  warn(RuntimeWarning(
+[2021-04-28 02:14:28,297: ERROR/ForkPoolWorker-1] Task create_task[b4592014-3669-4759-b90b-a1ba08b686a3] raised unexpected: TypeError('callback_task() takes 1 positional argument but 3 were given')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 1 positional argument but 3 were given
+[2021-04-28 02:15:54,930: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 02:15:54,942: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 02:15:55,968: INFO/MainProcess] mingle: all alone
+[2021-04-28 02:15:55,982: INFO/MainProcess] celery@fa38e4dc29a7 ready.
+[2021-04-28 02:16:00,356: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 02:16:10,621: INFO/MainProcess] Received task: create_task[3c858bfe-4f94-4346-b13e-d8170fb00f74]  
+[2021-04-28 02:16:20,636: WARNING/ForkPoolWorker-1] /usr/local/lib/python3.9/site-packages/celery/app/trace.py:622: RuntimeWarning: Exception raised outside body: TypeError('callback_task() takes 1 positional argument but 2 were given'):
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 1 positional argument but 2 were given
+
+  warn(RuntimeWarning(
+[2021-04-28 02:16:20,640: ERROR/ForkPoolWorker-1] Task create_task[3c858bfe-4f94-4346-b13e-d8170fb00f74] raised unexpected: TypeError('callback_task() takes 1 positional argument but 2 were given')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 1 positional argument but 2 were given
+[2021-04-28 02:17:47,243: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 02:17:47,254: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 02:17:48,279: INFO/MainProcess] mingle: all alone
+[2021-04-28 02:17:48,293: INFO/MainProcess] celery@0f0efbe773bf ready.
+[2021-04-28 02:17:52,463: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 02:17:55,078: INFO/MainProcess] Received task: create_task[719acfb4-bae5-482e-9964-e072bd307aa2]  
+[2021-04-28 02:18:05,084: WARNING/ForkPoolWorker-1] /usr/local/lib/python3.9/site-packages/celery/app/trace.py:622: RuntimeWarning: Exception raised outside body: TypeError('callback_task() takes 0 positional arguments but 1 was given'):
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 0 positional arguments but 1 was given
+
+  warn(RuntimeWarning(
+[2021-04-28 02:18:05,088: ERROR/ForkPoolWorker-1] Task create_task[719acfb4-bae5-482e-9964-e072bd307aa2] raised unexpected: TypeError('callback_task() takes 0 positional arguments but 1 was given')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 0 positional arguments but 1 was given
+[2021-04-28 02:19:33,772: INFO/MainProcess] Received task: create_task[4f53c884-3d54-43ee-9db1-b5009515a2a8]  
+[2021-04-28 02:19:43,785: WARNING/ForkPoolWorker-1] /usr/local/lib/python3.9/site-packages/celery/app/trace.py:622: RuntimeWarning: Exception raised outside body: AttributeError("'bool' object has no attribute '_app'"):
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 1541, in maybe_signature
+    d._app = app
+AttributeError: 'bool' object has no attribute '_app'
+
+  warn(RuntimeWarning(
+[2021-04-28 02:19:43,786: ERROR/ForkPoolWorker-1] Task create_task[4f53c884-3d54-43ee-9db1-b5009515a2a8] raised unexpected: AttributeError("'bool' object has no attribute '_app'")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 1541, in maybe_signature
+    d._app = app
+AttributeError: 'bool' object has no attribute '_app'
+[2021-04-28 02:24:53,714: INFO/MainProcess] Received task: create_task[5690f59b-e325-454f-b4bb-ea3a8f51a3bd]  
+[2021-04-28 02:25:03,725: ERROR/ForkPoolWorker-1] Task create_task[5690f59b-e325-454f-b4bb-ea3a8f51a3bd] raised unexpected: TypeError('callback_task() takes 0 positional arguments but 1 was given')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 0 positional arguments but 1 was given
+[2021-04-28 02:26:56,784: INFO/MainProcess] Received task: create_task[52c55625-08df-47aa-a83c-7bb3de5e4567]  
+[2021-04-28 02:27:06,799: ERROR/ForkPoolWorker-1] Task create_task[52c55625-08df-47aa-a83c-7bb3de5e4567] raised unexpected: TypeError('callback_task() takes 0 positional arguments but 1 was given')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 465, in trace_task
+    signature(callbacks[0], app=app).apply_async(
+  File "/usr/local/lib/python3.9/site-packages/celery/canvas.py", line 235, in apply_async
+    return _apply(args, kwargs, **options)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/task.py", line 531, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: callback_task() takes 0 positional arguments but 1 was given
+[2021-04-28 02:28:12,627: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 02:28:12,639: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 02:28:13,664: INFO/MainProcess] mingle: all alone
+[2021-04-28 02:28:13,680: INFO/MainProcess] celery@edf9778656b7 ready.
+[2021-04-28 02:28:17,669: INFO/MainProcess] Received task: create_task[adeb83a1-e7de-4cff-b6cc-1be665f028f4]  
+[2021-04-28 02:28:18,009: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 02:28:22,676: INFO/ForkPoolWorker-1] Task create_task[adeb83a1-e7de-4cff-b6cc-1be665f028f4] succeeded in 5.00509319268167s: True
+[2021-04-28 02:30:35,081: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 02:30:35,091: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 02:30:36,116: INFO/MainProcess] mingle: all alone
+[2021-04-28 02:30:36,132: INFO/MainProcess] celery@d7d0a657ef78 ready.
+[2021-04-28 02:30:40,319: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 02:30:40,358: INFO/MainProcess] Received task: create_task[3d7a18a2-aad8-42bf-9f2d-1040f3c415be]  
+[2021-04-28 02:30:45,402: INFO/MainProcess] Received task: callback_task[1615e41a-25b5-4dc9-88e0-e7b9940f4acc]  
+[2021-04-28 02:30:45,403: INFO/ForkPoolWorker-1] Task create_task[3d7a18a2-aad8-42bf-9f2d-1040f3c415be] succeeded in 5.0425439747050405s: True
+[2021-04-28 02:30:45,407: ERROR/ForkPoolWorker-1] Task callback_task[1615e41a-25b5-4dc9-88e0-e7b9940f4acc] raised unexpected: TypeError('can only concatenate str (not "bool") to str')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 412, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 704, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/usr/src/app/project/server/tasks.py", line 19, in callback_task
+    print("callback_task : "+url)
+TypeError: can only concatenate str (not "bool") to str
+[2021-04-28 02:33:55,267: ERROR/MainProcess] Received unregistered task of type 'receive_async_task'.
+The message has been ignored and discarded.
+
+Did you remember to import the module containing this task?
+Or maybe you're using relative imports?
+
+Please see
+http://docs.celeryq.org/en/latest/internals/protocol.html
+for more information.
+
+The full contents of the message body was:
+b'[["http://leeheesuk.com"], {}, {"callbacks": [{"task": "callback_task", "args": [], "kwargs": {}, "options": {}, "subtask_type": null, "immutable": false, "chord_size": null}], "errbacks": null, "chain": null, "chord": null}]' (225b)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/worker/consumer/consumer.py", line 562, in on_task_received
+    strategy = strategies[type_]
+KeyError: 'receive_async_task'
+[2021-04-28 02:34:11,703: ERROR/MainProcess] Received unregistered task of type 'receive_async_task'.
+The message has been ignored and discarded.
+
+Did you remember to import the module containing this task?
+Or maybe you're using relative imports?
+
+Please see
+http://docs.celeryq.org/en/latest/internals/protocol.html
+for more information.
+
+The full contents of the message body was:
+b'[["http://leeheesuk.com"], {}, {"callbacks": [{"task": "callback_task", "args": [], "kwargs": {}, "options": {}, "subtask_type": null, "immutable": false, "chord_size": null}], "errbacks": null, "chain": null, "chord": null}]' (225b)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/worker/consumer/consumer.py", line 562, in on_task_received
+    strategy = strategies[type_]
+KeyError: 'receive_async_task'
+[2021-04-28 02:35:45,032: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 02:35:45,045: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 02:35:46,070: INFO/MainProcess] mingle: all alone
+[2021-04-28 02:35:46,082: INFO/MainProcess] celery@ad958b07f129 ready.
+[2021-04-28 02:35:50,593: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 02:35:53,197: INFO/MainProcess] Received task: receive_async_task[7d2699fb-07b7-4dd6-ba06-d5f3850f5313]  
+[2021-04-28 02:35:58,242: INFO/MainProcess] Received task: callback_task[040348c7-0cbc-4f55-a5c5-4c40b848664a]  
+[2021-04-28 02:35:58,245: WARNING/ForkPoolWorker-3] callback_task : http://leeheesuk.com
+[2021-04-28 02:35:58,246: INFO/ForkPoolWorker-1] Task receive_async_task[7d2699fb-07b7-4dd6-ba06-d5f3850f5313] succeeded in 5.046160503290594s: 'http://leeheesuk.com'
+[2021-04-28 02:35:58,249: INFO/ForkPoolWorker-3] Task callback_task[040348c7-0cbc-4f55-a5c5-4c40b848664a] succeeded in 0.004063578322529793s: True
+[2021-04-28 02:36:32,861: INFO/MainProcess] Received task: receive_async_task[cdfc6314-e67d-4b13-85b6-a92ba200242c]  
+[2021-04-28 02:36:37,867: INFO/MainProcess] Received task: callback_task[f95d0691-94ea-484f-a1e8-b44f6a18760c]  
+[2021-04-28 02:36:37,869: INFO/ForkPoolWorker-1] Task receive_async_task[cdfc6314-e67d-4b13-85b6-a92ba200242c] succeeded in 5.0053475657477975s: 'http://leeheesuk.com'
+[2021-04-28 02:36:37,870: WARNING/ForkPoolWorker-1] callback_task : http://leeheesuk.com
+[2021-04-28 02:36:37,871: INFO/ForkPoolWorker-1] Task callback_task[f95d0691-94ea-484f-a1e8-b44f6a18760c] succeeded in 0.0008232323452830315s: True
+[2021-04-28 02:36:59,554: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 02:36:59,567: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 02:37:00,593: INFO/MainProcess] mingle: all alone
+[2021-04-28 02:37:00,605: INFO/MainProcess] celery@393e9b53f581 ready.
+[2021-04-28 02:37:04,947: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 02:37:07,381: INFO/MainProcess] Received task: receive_async_task[603b6a3b-0cc5-4271-a256-1e3483733f9c]  
+[2021-04-28 02:37:17,427: INFO/MainProcess] Received task: callback_task[16a29960-242f-4bbd-a34d-0b522fd82024]  
+[2021-04-28 02:37:17,430: WARNING/ForkPoolWorker-3] callback_task : http://leeheesuk.com
+[2021-04-28 02:37:17,432: INFO/ForkPoolWorker-1] Task receive_async_task[603b6a3b-0cc5-4271-a256-1e3483733f9c] succeeded in 10.048339639790356s: 'http://leeheesuk.com'
+[2021-04-28 02:37:17,434: INFO/ForkPoolWorker-3] Task callback_task[16a29960-242f-4bbd-a34d-0b522fd82024] succeeded in 0.00433304812759161s: True
+[2021-04-28 02:37:57,535: INFO/MainProcess] Received task: receive_async_task[d3a7d25d-05e4-44e9-8968-25e88195ce08]  
+[2021-04-28 02:38:07,551: INFO/ForkPoolWorker-1] Task receive_async_task[d3a7d25d-05e4-44e9-8968-25e88195ce08] succeeded in 10.01296560652554s: 'http://leeheesuk.com'
+[2021-04-28 02:38:07,551: INFO/MainProcess] Received task: callback_task[6d547d37-96cd-4fa0-b5fd-5af383862f0d]  
+[2021-04-28 02:38:07,553: WARNING/ForkPoolWorker-1] callback_task : http://leeheesuk.com
+[2021-04-28 02:38:07,554: INFO/ForkPoolWorker-1] Task callback_task[6d547d37-96cd-4fa0-b5fd-5af383862f0d] succeeded in 0.0012045139446854591s: True
+[2021-04-28 03:06:34,640: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 03:06:34,660: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 03:06:35,688: INFO/MainProcess] mingle: all alone
+[2021-04-28 03:06:35,710: INFO/MainProcess] celery@d0f0d4306c20 ready.
+[2021-04-28 03:06:39,964: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 03:06:43,223: INFO/MainProcess] Received task: receive_async_task[1864ccdb-b579-434c-8702-72b75b421607]  
+[2021-04-28 03:06:53,260: INFO/MainProcess] Received task: callback_task[6142c7b9-f8d7-4853-86ac-a7a8f062fc2d]  
+[2021-04-28 03:06:53,263: WARNING/ForkPoolWorker-1] callback_task : http://leeheesuk.com
+[2021-04-28 03:06:53,263: INFO/ForkPoolWorker-3] Task receive_async_task[1864ccdb-b579-434c-8702-72b75b421607] succeeded in 10.03788492642343s: 'http://leeheesuk.com'
+[2021-04-28 03:07:01,502: ERROR/ForkPoolWorker-1] Task callback_task[6142c7b9-f8d7-4853-86ac-a7a8f062fc2d] raised unexpected: EncodeError(TypeError('Object of type bytes is not JSON serializable'))
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 50, in _reraise_errors
+    yield
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 221, in dumps
+    payload = encoder(data)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 69, in dumps
+    return _dumps(s, cls=cls or _default_encoder,
+  File "/usr/local/lib/python3.9/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/local/lib/python3.9/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 59, in default
+    return super(JSONEncoder, self).default(o)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bytes is not JSON serializable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 479, in trace_task
+    mark_as_done(
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 158, in mark_as_done
+    self.store_result(task_id, result, state, request=request)
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 442, in store_result
+    self._store_result(task_id, result, state, traceback,
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 865, in _store_result
+    self._set_with_state(self.get_key_for_task(task_id), self.encode(meta), state)
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 332, in encode
+    _, _, payload = self._encode(data)
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 336, in _encode
+    return dumps(data, serializer=self.serializer)
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 221, in dumps
+    payload = encoder(data)
+  File "/usr/local/lib/python3.9/contextlib.py", line 135, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 54, in _reraise_errors
+    reraise(wrapper, wrapper(exc), sys.exc_info()[2])
+  File "/usr/local/lib/python3.9/site-packages/vine/five.py", line 194, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 50, in _reraise_errors
+    yield
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 221, in dumps
+    payload = encoder(data)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 69, in dumps
+    return _dumps(s, cls=cls or _default_encoder,
+  File "/usr/local/lib/python3.9/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/local/lib/python3.9/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 59, in default
+    return super(JSONEncoder, self).default(o)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+kombu.exceptions.EncodeError: Object of type bytes is not JSON serializable
+[2021-04-28 03:08:39,398: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 03:08:39,411: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 03:08:40,443: INFO/MainProcess] mingle: all alone
+[2021-04-28 03:08:40,458: INFO/MainProcess] celery@20a603ba14e1 ready.
+[2021-04-28 03:08:44,626: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 03:08:47,498: INFO/MainProcess] Received task: receive_async_task[b5a09f07-7cbb-4238-ac87-49186fb7db4f]  
+[2021-04-28 03:08:57,539: INFO/MainProcess] Received task: callback_task[80914692-df60-4089-8843-bed580a402c9]  
+[2021-04-28 03:08:57,540: INFO/ForkPoolWorker-3] Task receive_async_task[b5a09f07-7cbb-4238-ac87-49186fb7db4f] succeeded in 10.040420933626592s: 'http://leeheesuk.com'
+[2021-04-28 03:08:57,542: WARNING/ForkPoolWorker-1] callback_task : http://leeheesuk.com
+[2021-04-28 03:09:05,768: INFO/ForkPoolWorker-1] Task callback_task[80914692-df60-4089-8843-bed580a402c9] succeeded in 8.226766814477742s: 200
+[2021-04-28 03:10:00,667: INFO/MainProcess] Received task: receive_async_task[9e7ab18b-1d65-4c88-a733-b71dfc7210c1]  
+[2021-04-28 03:10:10,679: INFO/ForkPoolWorker-3] Task receive_async_task[9e7ab18b-1d65-4c88-a733-b71dfc7210c1] succeeded in 10.010211468674242s: 'http://leeheesuk.com'
+[2021-04-28 03:10:10,679: INFO/MainProcess] Received task: callback_task[f9d130c1-25b5-46b4-a31d-10a39e824688]  
+[2021-04-28 03:10:10,682: WARNING/ForkPoolWorker-3] callback_task : http://leeheesuk.com
+[2021-04-28 03:10:18,912: INFO/ForkPoolWorker-3] Task callback_task[f9d130c1-25b5-46b4-a31d-10a39e824688] succeeded in 8.230228565633297s: 200
+[2021-04-28 03:10:32,789: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 03:10:32,799: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 03:10:33,824: INFO/MainProcess] mingle: all alone
+[2021-04-28 03:10:33,838: INFO/MainProcess] celery@f656219e42b0 ready.
+[2021-04-28 03:10:37,923: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 03:10:49,414: INFO/MainProcess] Received task: receive_async_task[3c6a40ea-f446-4670-a949-64e51b8a9a2b]  
+[2021-04-28 03:10:59,460: INFO/MainProcess] Received task: callback_task[208c060e-9938-4675-a331-920c1a8306b6]  
+[2021-04-28 03:10:59,463: WARNING/ForkPoolWorker-1] callback_task : http://leeheesuk.com
+[2021-04-28 03:10:59,464: INFO/ForkPoolWorker-3] Task receive_async_task[3c6a40ea-f446-4670-a949-64e51b8a9a2b] succeeded in 10.046914272010326s: 'http://leeheesuk.com'
+[2021-04-28 03:11:07,718: INFO/ForkPoolWorker-1] Task callback_task[208c060e-9938-4675-a331-920c1a8306b6] succeeded in 8.254826186224818s: '
+<!doctype html>                 <html lang="ko" data-dark="false"> <head> <meta charset="utf-8"> <title>NAVER</title> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=1190"> <meta name="apple-mobile-web-app-title" content="NAVER"/> <meta name="robots" content="index,nofollow"/> <meta name="description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> <meta property="og:title" content="네이버"> <meta property="og:url" content="https://www.naver.com/"> <meta property="og:image" content="https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"> <meta property="og:description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content=""> <meta name="twitter:url" content="https://www.naver.com/"> <meta name="twitter:image" content="https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"> <meta name="twitter:description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> ...'
+[2021-04-28 03:13:28,969: INFO/MainProcess] Received task: receive_async_task[b5da7bfa-527f-4bd4-a158-23f1d1f69b8e]  
+[2021-04-28 03:13:30,518: INFO/MainProcess] Received task: receive_async_task[94527cf6-33b9-43e2-8e02-73a722e37bbf]  
+[2021-04-28 03:13:31,342: INFO/MainProcess] Received task: receive_async_task[7ea2a9aa-3b89-4f94-8c63-43fe4048123a]  
+[2021-04-28 03:13:32,023: INFO/MainProcess] Received task: receive_async_task[ab8ed44f-9d1c-4e62-b96f-108417fed4ce]  
+[2021-04-28 03:13:33,136: INFO/MainProcess] Received task: receive_async_task[b391c917-1347-42e1-8d90-8e2ba20f9700]  
+[2021-04-28 03:13:38,975: INFO/ForkPoolWorker-3] Task receive_async_task[b5da7bfa-527f-4bd4-a158-23f1d1f69b8e] succeeded in 10.003650189377367s: 'http://leeheesuk.com'
+[2021-04-28 03:13:38,975: INFO/MainProcess] Received task: callback_task[1e7aae2f-7ec7-4843-ab3a-291ac22fda4f]  
+[2021-04-28 03:13:40,559: INFO/MainProcess] Received task: callback_task[d1b0e63f-6574-476c-8ca6-3833fbb49aac]  
+[2021-04-28 03:13:40,561: INFO/ForkPoolWorker-1] Task receive_async_task[94527cf6-33b9-43e2-8e02-73a722e37bbf] succeeded in 10.041136953048408s: 'http://leeheesuk.com'
+[2021-04-28 03:13:40,563: WARNING/ForkPoolWorker-1] callback_task : http://leeheesuk.com
+[2021-04-28 03:13:41,393: INFO/MainProcess] Received task: callback_task[971f490d-6196-485e-925f-cc4e6ab9c0bb]  
+[2021-04-28 03:13:41,394: INFO/ForkPoolWorker-4] Task receive_async_task[7ea2a9aa-3b89-4f94-8c63-43fe4048123a] succeeded in 10.050273092463613s: 'http://leeheesuk.com'
+[2021-04-28 03:13:41,396: WARNING/ForkPoolWorker-4] callback_task : http://leeheesuk.com
+[2021-04-28 03:13:42,071: INFO/MainProcess] Received task: callback_task[cc6ff339-a625-40c0-9790-5fb162c220e8]  
+[2021-04-28 03:13:42,073: INFO/ForkPoolWorker-2] Task receive_async_task[ab8ed44f-9d1c-4e62-b96f-108417fed4ce] succeeded in 10.047680891118944s: 'http://leeheesuk.com'
+[2021-04-28 03:13:42,075: WARNING/ForkPoolWorker-2] callback_task : http://leeheesuk.com
+[2021-04-28 03:13:48,763: INFO/ForkPoolWorker-1] Task callback_task[1e7aae2f-7ec7-4843-ab3a-291ac22fda4f] succeeded in 8.200016743503511s: '
+<!doctype html>                 <html lang="ko" data-dark="false"> <head> <meta charset="utf-8"> <title>NAVER</title> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=1190"> <meta name="apple-mobile-web-app-title" content="NAVER"/> <meta name="robots" content="index,nofollow"/> <meta name="description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> <meta property="og:title" content="네이버"> <meta property="og:url" content="https://www.naver.com/"> <meta property="og:image" content="https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"> <meta property="og:description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content=""> <meta name="twitter:url" content="https://www.naver.com/"> <meta name="twitter:image" content="https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"> <meta name="twitter:description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> ...'
+[2021-04-28 03:13:48,766: WARNING/ForkPoolWorker-1] callback_task : http://leeheesuk.com
+[2021-04-28 03:13:48,989: INFO/ForkPoolWorker-3] Task receive_async_task[b391c917-1347-42e1-8d90-8e2ba20f9700] succeeded in 10.011125955730677s: 'http://leeheesuk.com'
+[2021-04-28 03:13:48,989: INFO/MainProcess] Received task: callback_task[7a280c39-cf40-45cb-b9e0-2e19ddb38eb2]  
+[2021-04-28 03:13:48,991: WARNING/ForkPoolWorker-3] callback_task : http://leeheesuk.com
+[2021-04-28 03:13:49,921: INFO/ForkPoolWorker-4] Task callback_task[d1b0e63f-6574-476c-8ca6-3833fbb49aac] succeeded in 8.524605466984212s: '
+<!doctype html>                 <html lang="ko" data-dark="false"> <head> <meta charset="utf-8"> <title>NAVER</title> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=1190"> <meta name="apple-mobile-web-app-title" content="NAVER"/> <meta name="robots" content="index,nofollow"/> <meta name="description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> <meta property="og:title" content="네이버"> <meta property="og:url" content="https://www.naver.com/"> <meta property="og:image" content="https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"> <meta property="og:description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content=""> <meta name="twitter:url" content="https://www.naver.com/"> <meta name="twitter:image" content="https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"> <meta name="twitter:description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> ...'
+[2021-04-28 03:13:50,334: INFO/ForkPoolWorker-2] Task callback_task[971f490d-6196-485e-925f-cc4e6ab9c0bb] succeeded in 8.25871376413852s: '
+<!doctype html>                 <html lang="ko" data-dark="false"> <head> <meta charset="utf-8"> <title>NAVER</title> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=1190"> <meta name="apple-mobile-web-app-title" content="NAVER"/> <meta name="robots" content="index,nofollow"/> <meta name="description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> <meta property="og:title" content="네이버"> <meta property="og:url" content="https://www.naver.com/"> <meta property="og:image" content="https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"> <meta property="og:description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content=""> <meta name="twitter:url" content="https://www.naver.com/"> <meta name="twitter:image" content="https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"> <meta name="twitter:description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> ...'
+[2021-04-28 03:13:57,101: INFO/ForkPoolWorker-1] Task callback_task[cc6ff339-a625-40c0-9790-5fb162c220e8] succeeded in 8.335014291107655s: '
+<!doctype html>                 <html lang="ko" data-dark="false"> <head> <meta charset="utf-8"> <title>NAVER</title> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=1190"> <meta name="apple-mobile-web-app-title" content="NAVER"/> <meta name="robots" content="index,nofollow"/> <meta name="description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> <meta property="og:title" content="네이버"> <meta property="og:url" content="https://www.naver.com/"> <meta property="og:image" content="https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"> <meta property="og:description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content=""> <meta name="twitter:url" content="https://www.naver.com/"> <meta name="twitter:image" content="https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"> <meta name="twitter:description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> ...'
+[2021-04-28 03:13:57,449: INFO/ForkPoolWorker-3] Task callback_task[7a280c39-cf40-45cb-b9e0-2e19ddb38eb2] succeeded in 8.457827338948846s: '
+<!doctype html>                 <html lang="ko" data-dark="false"> <head> <meta charset="utf-8"> <title>NAVER</title> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=1190"> <meta name="apple-mobile-web-app-title" content="NAVER"/> <meta name="robots" content="index,nofollow"/> <meta name="description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> <meta property="og:title" content="네이버"> <meta property="og:url" content="https://www.naver.com/"> <meta property="og:image" content="https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"> <meta property="og:description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content=""> <meta name="twitter:url" content="https://www.naver.com/"> <meta name="twitter:image" content="https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"> <meta name="twitter:description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> ...'
+[2021-04-28 09:17:45,924: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 09:17:45,936: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 09:17:46,963: INFO/MainProcess] mingle: all alone
+[2021-04-28 09:17:46,979: INFO/MainProcess] celery@f33517d41d79 ready.
+[2021-04-28 09:17:51,070: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 09:29:19,220: INFO/MainProcess] Received task: create_task[0d2913ac-f0ee-4bf6-bc06-e38841f8237f]  
+[2021-04-28 09:29:24,242: INFO/ForkPoolWorker-7] Task create_task[0d2913ac-f0ee-4bf6-bc06-e38841f8237f] succeeded in 5.015191043001323s: True
+[2021-04-28 09:41:35,083: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379/0: Error 110 connecting to redis:6379. Connection timed out..
+Trying again in 2.00 seconds... (1/100)
+
+[2021-04-28 09:42:46,438: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-04-28 09:42:46,450: INFO/MainProcess] mingle: searching for neighbors
+[2021-04-28 09:42:47,475: INFO/MainProcess] mingle: all alone
+[2021-04-28 09:42:47,489: INFO/MainProcess] celery@50a33e81d8a0 ready.
+[2021-04-28 09:42:51,725: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-04-28 09:42:52,902: INFO/MainProcess] Received task: create_task[a8b89746-c64d-4166-bcee-99caf7726b32]  
+[2021-04-28 09:42:57,914: INFO/ForkPoolWorker-7] Task create_task[a8b89746-c64d-4166-bcee-99caf7726b32] succeeded in 5.009238912000001s: True
+[2021-04-28 09:43:15,913: INFO/MainProcess] Received task: receive_async_task[b9cf6ea2-ed29-4a47-bf81-3dd7e6e656fc]  
+[2021-04-28 09:43:25,957: INFO/MainProcess] Received task: callback_task[831b53e7-1975-42db-99fb-29503b34a32b]  
+[2021-04-28 09:43:25,958: INFO/ForkPoolWorker-7] Task receive_async_task[b9cf6ea2-ed29-4a47-bf81-3dd7e6e656fc] succeeded in 10.042300733999582s: 'http://leeheesuk.com'
+[2021-04-28 09:43:25,959: WARNING/ForkPoolWorker-7] callback_task : http://leeheesuk.com
+[2021-04-28 09:43:34,275: INFO/ForkPoolWorker-7] Task callback_task[831b53e7-1975-42db-99fb-29503b34a32b] succeeded in 8.315638124000543s: '
+<!doctype html>                 <html lang="ko" data-dark="false"> <head> <meta charset="utf-8"> <title>NAVER</title> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=1190"> <meta name="apple-mobile-web-app-title" content="NAVER"/> <meta name="robots" content="index,nofollow"/> <meta name="description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> <meta property="og:title" content="네이버"> <meta property="og:url" content="https://www.naver.com/"> <meta property="og:image" content="https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"> <meta property="og:description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content=""> <meta name="twitter:url" content="https://www.naver.com/"> <meta name="twitter:image" content="https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"> <meta name="twitter:description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> ...'
+[2021-04-28 09:43:49,417: INFO/MainProcess] Received task: receive_async_task[a24183a6-2820-44d0-b788-f2c7d8d7fed9]  
+[2021-04-28 09:43:59,427: INFO/MainProcess] Received task: callback_task[0bcb5c84-d46b-4309-a804-75da7c5c8106]  
+[2021-04-28 09:43:59,429: INFO/ForkPoolWorker-7] Task receive_async_task[a24183a6-2820-44d0-b788-f2c7d8d7fed9] succeeded in 10.00923913799852s: 'http://leeheesuk.com'
+[2021-04-28 09:43:59,430: WARNING/ForkPoolWorker-7] callback_task : http://leeheesuk.com
+[2021-04-28 09:44:07,670: INFO/ForkPoolWorker-7] Task callback_task[0bcb5c84-d46b-4309-a804-75da7c5c8106] succeeded in 8.240131406999353s: '
+<!doctype html>                 <html lang="ko" data-dark="false"> <head> <meta charset="utf-8"> <title>NAVER</title> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=1190"> <meta name="apple-mobile-web-app-title" content="NAVER"/> <meta name="robots" content="index,nofollow"/> <meta name="description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> <meta property="og:title" content="네이버"> <meta property="og:url" content="https://www.naver.com/"> <meta property="og:image" content="https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"> <meta property="og:description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content=""> <meta name="twitter:url" content="https://www.naver.com/"> <meta name="twitter:image" content="https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"> <meta name="twitter:description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> ...'
+[2021-04-29 01:34:26,685: INFO/MainProcess] Received task: receive_async_task[ac33f0b3-1107-46be-bc9b-cef7f896e2bf]  
+[2021-04-29 01:34:36,714: INFO/MainProcess] Received task: callback_task[80314685-76b2-48b9-950a-41b26b6e47d7]  
+[2021-04-29 01:34:36,716: INFO/ForkPoolWorker-7] Task receive_async_task[ac33f0b3-1107-46be-bc9b-cef7f896e2bf] succeeded in 10.022712220001267s: 'http://leeheesuk.com'
+[2021-04-29 01:34:36,725: WARNING/ForkPoolWorker-8] callback_task : http://leeheesuk.com
+[2021-04-29 01:34:45,236: INFO/ForkPoolWorker-8] Task callback_task[80314685-76b2-48b9-950a-41b26b6e47d7] succeeded in 8.513447400007863s: '
+<!doctype html>                 <html lang="ko" data-dark="false"> <head> <meta charset="utf-8"> <title>NAVER</title> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=1190"> <meta name="apple-mobile-web-app-title" content="NAVER"/> <meta name="robots" content="index,nofollow"/> <meta name="description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> <meta property="og:title" content="네이버"> <meta property="og:url" content="https://www.naver.com/"> <meta property="og:image" content="https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"> <meta property="og:description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content=""> <meta name="twitter:url" content="https://www.naver.com/"> <meta name="twitter:image" content="https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"> <meta name="twitter:description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> ...'
+[2021-04-29 01:35:30,641: INFO/MainProcess] Received task: create_task[2017dcdc-50bb-4899-9037-18111f6720f5]  
+[2021-04-29 01:35:35,648: INFO/ForkPoolWorker-7] Task create_task[2017dcdc-50bb-4899-9037-18111f6720f5] succeeded in 5.005735993006965s: True
+[2021-04-29 01:35:40,667: INFO/MainProcess] Received task: create_task[51da9d71-497b-426a-963a-027b974feb5a]  
+[2021-04-29 01:35:45,675: INFO/ForkPoolWorker-7] Task create_task[51da9d71-497b-426a-963a-027b974feb5a] succeeded in 5.006440830009524s: True
