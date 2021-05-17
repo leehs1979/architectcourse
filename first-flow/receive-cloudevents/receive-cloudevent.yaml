@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: receive-cloudevent
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: receive-cloudevent
+  template:
+    metadata:
+      labels:
+        app: receive-cloudevent
+    spec:
+      containers:
+        - name: receive-cloudevent
+          image: jhc4guru/receive-cloudevent:latest
+          ports:
+          - containerPort: 8001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: receive-cloudevent
+spec:
+  type: LoadBalancer
+  selector:
+    app: receive-cloudevent
+  ports:
+  - protocol: TCP
+    port: 8001
+    targetPort: 8001

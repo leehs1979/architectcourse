@@ -1,0 +1,14 @@
+{
+    "targetURL" : "http://35.226.56.118", 
+    "targetAPI" : "/test",
+    "headers" : {
+        "Content-type" : "application/json",
+        "Header1" : "Header1",
+        "Header2" : "Header2"
+    },
+    "body" : {
+        "parameter1" : "parameter1",
+        "parameter2" : "parameter2",
+        "parameter3" : "parameter3"
+    }
+}

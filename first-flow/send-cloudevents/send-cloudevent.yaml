@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: send-cloudevent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: send-cloudevent
+  template:
+    metadata:
+      labels:
+        app: send-cloudevent
+    spec:
+      containers:
+        - name: send-cloudevent
+          image: jhc4guru/send-cloudevent:latest
+          ports:
+          - containerPort: 8001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: send-cloudevent
+spec:
+  type: LoadBalancer
+  selector:
+    app: send-cloudevent
+  ports:
+  - protocol: TCP
+    port: 8000
+    targetPort: 8000

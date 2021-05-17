@@ -1,0 +1,5 @@
+pip==21.0
+flask
+flask-restx==0.3.0
+cloudevents==1.2.0
+requests
