@@ -91,7 +91,7 @@ send-cloudevent-5fc754445c-sgcl8                         1/1     Running   0    
 [root@architect21-team2-master first-flow]# 
 [root@architect21-team2-master first-flow]# 
 [root@architect21-team2-master first-flow]# 
-[root@architect21-team2-master first-flow]# kubectl get pod
+[root@architect21-team2-master send-cloudevents]# kubectl get pod
 NAME                                                           READY   STATUS    RESTARTS   AGE
 broker-kafka-display-00001-deployment-6b486d7dc5-2kqqb         2/2     Running   0          5d4h
 curl                                                           1/1     Running   0          21h
@@ -100,7 +100,7 @@ hello-world-7677cdf8dd-7llcl                                   1/1     Running  
 hello-world-7677cdf8dd-b49tm                                   1/1     Running   0          7d1h
 hello-world-7677cdf8dd-dgpkl                                   1/1     Running   0          7d1h
 hello-world-7677cdf8dd-p8p8m                                   1/1     Running   0          7d1h
-receive-cloudevent-service-00001-deployment-6b589b76bb-xqjdm   1/2     Running   0          3s
-send-cloudevent-5fc754445c-sgcl8                               1/1     Running   0          108m
+receive-cloudevent-service-00001-deployment-6b589b76bb-f7jrv   2/2     Running   0          12s
+send-cloudevent-5fc754445c-sgcl8                               1/1     Running   0          113m
 ```
 
