@@ -26,6 +26,23 @@ root@send-cloudevent-5fc754445c-sgcl8:/app# curl -X POST http://localhost:8000/e
 202
 root@send-cloudevent-5fc754445c-sgcl8:/app# curl -X POST http://localhost:8000/event -H "Content-type:application/json" -d @./test.json
 202
+
+test.json 
+{
+    "targetURL" : "http://35.226.56.118", 
+    "targetAPI" : "/test",
+    "headers" : {
+        "Content-type" : "application/json",
+        "Header1" : "Header1",
+        "Header2" : "Header2"
+    },
+    "body" : {
+        "callback-url" : "http://send-cloudevent:8000",
+        "callback-api" : "/event/callback",
+        "parameter2" : "parameter2",
+        "parameter3" : "parameter3"
+    }
+}
 ```
 
 ## 이벤트 확인
