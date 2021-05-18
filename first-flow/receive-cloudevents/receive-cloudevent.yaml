@@ -1,32 +1,31 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: receive-cloudevent
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: receive-cloudevent
-  template:
-    metadata:
-      labels:
-        app: receive-cloudevent
-    spec:
-      containers:
-        - name: receive-cloudevent
-          image: jhc4guru/receive-cloudevent:latest
-          ports:
-          - containerPort: 8001
----
-apiVersion: v1
+apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: receive-cloudevent
+  name: receive-cloudevent-service
+  namespace: default
 spec:
-  type: LoadBalancer
-  selector:
-    app: receive-cloudevent
-  ports:
-  - protocol: TCP
-    port: 8001
-    targetPort: 8001
+  template:
+    spec:
+      containers:
+      -  # This corresponds to
+         # https://github.com/knative/eventing-contrib/tree/main/cmd/event_display
+         #image: gcr.io/knative-releases/knative.dev/eventing-contrib/cmd/event_display
+         image: jhc4guru/receive-cloudevent:latest 
+         ports:
+          - containerPort: 8001
+---
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: receive-cloudevent-trigger
+  namespace: default
+spec:
+  broker: kafka-backed-broker
+  filter:
+    attributes:
+      type: dev.knative.samples.t2
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: receive-cloudevent-service

@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 
 from cloudevents.http import from_http
-import requests
+import requests,json
 
 app = Flask(__name__)
 
@@ -25,12 +25,13 @@ def home():
 
     print(targetURL)
     print(targetAPI)
+    json_body=json.dumps(body)
     print(headers)
-    print(body)
+    print(json_body)
 
     #response = requests.get(targetURL+targetAPI)
-    requests.post(targetURL+targetAPI, data=body, headers=headers)
-    #print(response.text,flush=True)
+    response = requests.post(targetURL+targetAPI, data=json_body, headers=headers)
+    print(response.text,flush=True)
 
     return "", 204
 

@@ -3,7 +3,8 @@ import flask.scaffold
 flask.helpers._endpoint_from_view_func = flask.scaffold._endpoint_from_view_func
 import flask_restful
 from flask_restx import Resource, Api
-import requests,json
+from cloudevents.http import CloudEvent, to_structured
+import requests
 
 app = Flask(__name__)
 api = Api(app)
@@ -15,24 +16,30 @@ class CreateEvent(Resource):
         return {"message" : "Welcome, Event"}
     def post(self):  
         type_header = request.headers.get('Content-type')
-        print(type_header)
+        url = request.json.get('targetURL')
+        api = request.json.get('targetAPI')
         
         headers = {
-                'Ce-Id': '536808d3-88be-4077-9d7a-a3f162705f79',
-                'Ce-specversion': '0.3',
-                'Ce-Type': 'dev.knative.samples.t2',
-                'Ce-Source': 'dev.knative.samples/t2',
-                'Content-Type': 'application/json'
+            "Content-type" : "application/json"
         }
 
-        data = request.get_json()
-        #data = '{"targetURL": "http://35.226.56.118", "targetAPI": "/test"}'
-        json_data=json.dumps(data)
-        print(json_data)
+        attributes = {
+                       "type": "com.example.sampletype2",
+                        "source": "https://example.com/event-producer",
+        }
+        datas = request.get_json()
+        print(datas)
 
-        res=requests.post("http://broker-ingress.knative-eventing.svc.cluster.local/default/kafka-backed-broker", headers=headers, data=json_data)
-        print(res.reason, flush=True)
-        return res.status_code
+        event = CloudEvent(attributes, datas)
+        headers, body = to_structured(event)
+        print(headers)
+        print(body)
+        print(url)
+        print(api,flush=True)
+        #requests.post("http://receive-cloudevent:8001", data=body, headers=headers) # 가상의 이벤트 발생 broker 주소
+        requests.post("http://broker-ingress.knative-eventing.svc.cluster.local/default/kafka-backend-broker", data=body, headers=headers) # 가상의 이벤트 발생 broker 주소
+        #return jsonify({'targetURL' : url, 'targetAPI' : api})
+        return jsonify(datas)
 
 @api.route('/event/callback')  # url pattern으로 name 설정
 class EventCallback(Resource):
