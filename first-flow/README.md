@@ -12,7 +12,8 @@ K8S 의 Service(Loadbalancer) 와 deployment 로 구성되며 Broker 에게 post
 /event/callback: callback 처리를 위함 임시 GET/POST Method
 
 ex) 
-curl -X POST http://send-cloudevent:8000/event -H "Content-type:application/json" -d '{"targetURL" : "http://35.226.56.118", "targetAPI" : "/test"}'
+curl -X POST http://send-cloudevent:8000/event -H "Content-type:application/json" -d '{"targetURL" : "http://35.226.56.118", "targetAPI" : "/test", "headers":"headers", "body":"body"}' 
+(코드상 headers, body 는 필요하다. 없으면 receive cloudevent 에서 500 에러 발생)
 
 ## 2. receive-cloudevents
 
