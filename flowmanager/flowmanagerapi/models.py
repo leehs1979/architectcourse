@@ -55,8 +55,8 @@ class FLOW_DTL(models.Model):
     creator = models.CharField(max_length=50, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name="date create")
     
-    def __str__(self):
-        return self.flow_nm
+    #def __str__(self):
+    #    return self.flow_nm
 
     class Meta:
         unique_together = ('flow', 'api', 'api_seq')
