@@ -23,5 +23,5 @@ def receive_async_task(url):
 @celery.task(name="callback_task")
 def callback_task(url):
     print("callback_task : "+url)
-    return requests.get('http://www.naver.com').text
+    return requests.get(url).text
 

@@ -28,3 +28,5 @@ flowmanager/flowmanagerapi/migrations/__pycache__/0001_initial.cpython-36.pyc
 flowmanager/flowmanagerapi/migrations/__pycache__/0001_initial.cpython-37.pyc
 sqllite3/sqlite-3.8.11-1.fc21.x86_64.rpm
 sqllite3/sqlite-devel-3.8.11-1.fc21.x86_64.rpm
+api-sample/project/logs/celery.log
+service-sample/flask-sample/__pycache__/app.cpython-36.pyc
