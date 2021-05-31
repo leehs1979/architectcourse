@@ -13,5 +13,7 @@ Django Rest framework 사용
     "schedule": "http://35.227.165.228:8000/api/flow/schedule/",
     "user": "http://35.227.165.228:8000/api/user/"
 ```
-
-
+- 실행
+```sh
+$ docker-compose up -d --build
+```
