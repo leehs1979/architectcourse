@@ -5,6 +5,7 @@ RUN mkdir /app
 COPY app.py /app
 COPY requirements.txt /app
 COPY test.json  /app
+COPY tasks_test.json  /app
 
 WORKDIR /app
 

@@ -1,0 +1,10 @@
+{
+    "targetURL" : "http://35.227.165.228:5004", 
+    "targetAPI" : "/tasks",
+    "headers" : {
+        "Content-type" : "application/json"
+    },
+    "body" : {
+	"type" : "10"
+    }
+}

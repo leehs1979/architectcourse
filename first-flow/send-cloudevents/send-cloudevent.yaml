@@ -21,12 +21,16 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: send-cloudevent
+  #name: send-cloudevent
+  name: send-cloudevent-svc
 spec:
-  type: LoadBalancer
+  #type: LoadBalancer
+  type: NodePort
   selector:
     app: send-cloudevent
   ports:
   - protocol: TCP
-    port: 8000
+    port: 7000
     targetPort: 8000
+    nodePort: 30001
+
