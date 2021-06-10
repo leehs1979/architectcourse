@@ -33,8 +33,14 @@ def get_status(task_id):
     }
     return jsonify(result), 200
 
-@main_blueprint.route("/callback_tasks", methods=["GET"])
+@main_blueprint.route("/callback_tasks", methods=["POST"])
 def run_callback():
+    content = request.json
+    print(content)
+
+    callback_uri = content["callback_uri"]
+
     # Add Celery
-    task = receive_async_task.apply_async(["http://leeheesuk.com"], link=[callback_task.s()]) 
+    task = receive_async_task.apply_async([callback_uri], link=[callback_task.s()]) 
     return jsonify({"task_id": task.id}), 202
+

@@ -1,0 +1,14 @@
+version: '3.3'
+
+services:
+
+  web_1:
+    build: .
+    image: web_1
+    container_name: web_1
+    ports:
+      - 5008:5001
+    command: flask run -h 0.0.0.0 -p 5001
+    volumes:
+      - .:/code
+    #environment:

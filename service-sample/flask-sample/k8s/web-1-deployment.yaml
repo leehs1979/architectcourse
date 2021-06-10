@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: ./kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: web-1
+  name: web-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: web-1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: ./kompose convert
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: web-1
+    spec:
+      containers:
+        - args:
+            - flask
+            - run
+            - -h
+            - 0.0.0.0
+            - -p
+            - "5001"
+          image: web_1
+          name: web-1
+          ports:
+            - containerPort: 5001
+          resources: {}
+          volumeMounts:
+            - mountPath: /code
+              name: web-1-claim0
+      restartPolicy: Always
+      volumes:
+        - name: web-1-claim0
+          persistentVolumeClaim:
+            claimName: web-1-claim0
+status: {}

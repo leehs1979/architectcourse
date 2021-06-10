@@ -671,3 +671,30 @@ Trying again in 2.00 seconds... (1/100)
 [2021-04-29 01:35:35,648: INFO/ForkPoolWorker-7] Task create_task[2017dcdc-50bb-4899-9037-18111f6720f5] succeeded in 5.005735993006965s: True
 [2021-04-29 01:35:40,667: INFO/MainProcess] Received task: create_task[51da9d71-497b-426a-963a-027b974feb5a]  
 [2021-04-29 01:35:45,675: INFO/ForkPoolWorker-7] Task create_task[51da9d71-497b-426a-963a-027b974feb5a] succeeded in 5.006440830009524s: True
+[2021-05-31 00:46:31,776: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-05-31 00:46:31,790: INFO/MainProcess] mingle: searching for neighbors
+[2021-05-31 00:46:32,817: INFO/MainProcess] mingle: all alone
+[2021-05-31 00:46:32,834: INFO/MainProcess] celery@7236fde0a078 ready.
+[2021-05-31 00:46:37,290: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-05-31 01:44:32,274: INFO/MainProcess] Received task: create_task[1b32c95d-a529-46e8-8010-21b97b3cac97]  
+[2021-05-31 01:44:37,283: INFO/ForkPoolWorker-1] Task create_task[1b32c95d-a529-46e8-8010-21b97b3cac97] succeeded in 5.005758182145655s: True
+[2021-05-31 01:59:27,251: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-05-31 01:59:27,267: INFO/MainProcess] mingle: searching for neighbors
+[2021-05-31 01:59:28,309: INFO/MainProcess] mingle: all alone
+[2021-05-31 01:59:28,324: INFO/MainProcess] celery@99ca4701a546 ready.
+[2021-05-31 01:59:32,851: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-05-31 01:59:55,280: INFO/MainProcess] Connected to redis://redis:6379/0
+[2021-05-31 01:59:55,310: INFO/MainProcess] mingle: searching for neighbors
+[2021-05-31 01:59:56,358: INFO/MainProcess] mingle: all alone
+[2021-05-31 01:59:56,378: INFO/MainProcess] celery@879b3e1d791b ready.
+[2021-05-31 02:00:01,279: INFO/MainProcess] Events of group {task} enabled by remote.
+[2021-05-31 02:03:30,869: INFO/MainProcess] Received task: create_task[42ac6444-c717-434a-80b7-c49de94e5a1c]  
+[2021-05-31 02:03:35,885: INFO/ForkPoolWorker-1] Task create_task[42ac6444-c717-434a-80b7-c49de94e5a1c] succeeded in 5.010665828827769s: True
+[2021-05-31 02:20:15,746: INFO/MainProcess] Received task: create_task[31404b53-a5c9-4762-ba28-daa793889a69]  
+[2021-05-31 02:20:53,515: INFO/MainProcess] Received task: receive_async_task[99fe1ef7-2348-4b8c-aee5-f712b4e5e629]  
+[2021-05-31 02:21:03,558: INFO/MainProcess] Received task: callback_task[c652979a-03de-477e-9576-c88897ea21a8]  
+[2021-05-31 02:21:03,559: INFO/ForkPoolWorker-3] Task receive_async_task[99fe1ef7-2348-4b8c-aee5-f712b4e5e629] succeeded in 10.041563188191503s: 'http://www.naver.com'
+[2021-05-31 02:21:03,561: WARNING/ForkPoolWorker-3] callback_task : http://www.naver.com
+[2021-05-31 02:21:04,055: INFO/ForkPoolWorker-3] Task callback_task[c652979a-03de-477e-9576-c88897ea21a8] succeeded in 0.4938972480595112s: '
+<!doctype html>                 <html lang="ko" data-dark="false"> <head> <meta charset="utf-8"> <title>NAVER</title> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=1190"> <meta name="apple-mobile-web-app-title" content="NAVER"/> <meta name="robots" content="index,nofollow"/> <meta name="description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> <meta property="og:title" content="네이버"> <meta property="og:url" content="https://www.naver.com/"> <meta property="og:image" content="https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"> <meta property="og:description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content=""> <meta name="twitter:url" content="https://www.naver.com/"> <meta name="twitter:image" content="https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"> <meta name="twitter:description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"/> ...'
+[2021-05-31 02:21:05,799: INFO/ForkPoolWorker-1] Task create_task[31404b53-a5c9-4762-ba28-daa793889a69] succeeded in 50.051098209107295s: True
