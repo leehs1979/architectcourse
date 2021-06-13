@@ -1,4 +1,6 @@
 # project/server/main/views.py
+import os
+import time
 from project.server.tasks import create_task, receive_async_task, callback_task
 from celery.result import AsyncResult
 
@@ -44,3 +46,30 @@ def run_callback():
     task = receive_async_task.apply_async([callback_uri], link=[callback_task.s()]) 
     return jsonify({"task_id": task.id}), 202
 
+
+## add by infordb
+@main_blueprint.route("/sync_tasks/<api_id>", methods=["GET"])
+def run_sync_api(api_id):
+    time.sleep(1)
+    result = {
+        "api_id": api_id
+    }
+    return jsonify(result), 200
+
+
+@main_blueprint.route("/callback_tasks/<api_id>", methods=["POST"])
+def run_callback_api(api_id):
+    content = request.json
+    print(content)
+
+    callback_uri = content["callback_uri"]
+
+    # Add Celery
+    task = receive_async_task.apply_async([callback_uri], link=[callback_task.s()]) 
+
+    result = {
+        "task_id": task.id,
+        "api_id": api_id
+    }
+
+    return jsonify(result), 202
