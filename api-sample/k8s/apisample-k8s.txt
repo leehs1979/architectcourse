@@ -1,0 +1,237 @@
+kubectl create ns apisample
+
+
+#############
+redis
+#############
+cat << EOF | kubectl apply -n apisample -f -
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: redis
+    component: cache
+  name: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: redis
+  template:
+    metadata:
+      labels:
+        name: redis
+        component: cache
+    spec:
+      containers:
+      - name: redis
+        image: redis
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 6379
+          name: redis
+        env:
+        - name: MASTER
+          value: "true"
+EOF
+
+cat << EOF | kubectl apply -n apisample -f -
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  labels:
+    name: redis
+spec:
+  selector:
+    name: redis
+  ports:
+  - name: redis
+    protocol: TCP
+    port: 6379
+    targetPort: 6379
+EOF
+
+#############
+worker
+#############
+cat << EOF | kubectl apply -n apisample -f -
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apisample-worker
+  labels:
+    app: worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: worker
+  template:
+    metadata:
+      labels:
+        app: worker
+    spec:
+      containers:
+      - name: worker
+        image: infordb/apisample_worker:v1.0
+        args:
+          - celery
+          - worker
+          - --app=project.server.tasks.celery
+          - --loglevel=info
+          - --logfile=project/logs/celery.log
+        env:
+          - name: APP_SETTINGS
+            value: project.server.config.DevelopmentConfig
+          - name: CELERY_BROKER_URL
+            value: redis://redis:6379/0
+          - name: CELERY_RESULT_BACKEND
+            value: redis://redis:6379/0
+          - name: FLASK_DEBUG
+            value: "1"	
+EOF
+
+
+#############
+web
+#############
+
+
+cat << EOF | kubectl apply -n apisample -f -
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apisample-web
+  labels:
+    app: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: web
+        image: infordb/apisample_worker:v1.0
+        args:
+          - python
+          - manage.py
+          - run
+          - -h
+          - 0.0.0.0
+        env:
+          - name: APP_SETTINGS
+            value: project.server.config.DevelopmentConfig
+          - name: CELERY_BROKER_URL
+            value: redis://redis:6379/0
+          - name: CELERY_RESULT_BACKEND
+            value: redis://redis:6379/0
+          - name: FLASK_DEBUG
+            value: "1"
+        ports:
+          - containerPort: 5000
+EOF
+
+
+cat << EOF | kubectl apply -n apisample -f -
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+spec:
+  ports:
+    - name: "5004"
+      port: 5004
+      targetPort: 5000
+  selector:
+    app: web
+EOF
+
+
+cat << EOF | kubectl apply -n apisample -f -
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-nodeport
+  labels:
+    name: web
+spec:
+  type: NodePort
+  ports:
+    - port: 5004
+      nodePort: 30000
+      targetPort: 5000
+      name: http
+  selector:
+    app: web
+  type: NodePort
+EOF
+
+
+#############
+dashboard
+#############
+
+cat << EOF | kubectl apply -n apisample -f -
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apisample-dashboard
+  labels:
+    app: dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dashboard
+  template:
+    metadata:
+      labels:
+        app: dashboard
+    spec:
+      containers:
+        - args:
+            - flower
+            - --app=project.server.tasks.celery
+            - --port=5555
+            - --broker=redis://redis:6379/0
+          env:
+            - name: APP_SETTINGS
+              value: project.server.config.DevelopmentConfig
+            - name: CELERY_BROKER_URL
+              value: redis://redis:6379/0
+            - name: CELERY_RESULT_BACKEND
+              value: redis://redis:6379/0
+            - name: FLASK_DEBUG
+              value: "1"
+          image: infordb/apisample_worker:v1.0
+          name: dashboard
+          ports:
+            - containerPort: 5555
+EOF
+
+
+
+cat << EOF | kubectl apply -n apisample -f -
+apiVersion: v1
+kind: Service
+metadata:
+  name: dashboard-nodeport
+  labels:
+    name: dashboard
+spec:
+  type: NodePort
+  ports:
+    - port: 5555
+      nodePort: 30001
+      targetPort: 5555
+      name: http
+  selector:
+    app: dashboard
+  type: NodePort
+EOF
