@@ -17,3 +17,21 @@ Django Rest framework 사용
 ```sh
 $ docker-compose up -d --build
 ```
+
+
+# Kubernetes 환경
+- Postgresql 접속정보
+```
+namespace : flowmanager
+service : postgres
+접속정보 :
+   name: POSTGRES_DB
+   value: mydb
+   name: POSTGRES_USER
+   value: team2
+   name: POSTGRES_PASSWORD
+   value: team2		
+   ports:
+    - containerPort: 5432
+        
+```
