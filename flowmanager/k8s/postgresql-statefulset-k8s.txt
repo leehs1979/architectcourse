@@ -1,0 +1,63 @@
+##https://www.bmc.com/blogs/kubernetes-postgresql/
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+  labels:
+    app: postgres
+spec:
+  ports:
+  - port: 5432
+    name: postgres
+  clusterIP: None
+  selector:
+    app: postgres
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres
+spec:
+  serviceName: "postgres"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:latest
+        env:
+          - name: POSTGRES_DB
+            value: mydb
+          - name: POSTGRES_USER
+            value: team2
+          - name: POSTGRES_PASSWORD
+            value: team2		
+        ports:
+        - containerPort: 5432
+          name: postgredb
+        volumeMounts:
+        - name: postgredb
+          mountPath: /var/lib/postgresql/data
+          subPath: postgres
+  volumeClaimTemplates:
+  - metadata:
+      name: postgredb
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: standard
+      resources:
+        requests:
+          storage: 30Gi
+		  
+##########################################		  
+#psql -h localhost -U team2 –-password -p 5432 mydb
+#psql -U team2 --password -d mydb
+#<service-name>.<namespace>.svc.cluster.local.
+#curl web.apisample:5004
+
