@@ -29,3 +29,34 @@ $ docker-compose up -d --build
 	- 예) curl http://35.227.165.228:5004/callback_tasks/
 	     post {"callback_uri" : "http://35.227.165.228:5008/callback" }	=> Sample Service
 ```
+
+# Kubernetes 환경
+- 설치 환경 및 접속    
+  namespace : apisample
+
+- 접속 URL
+```  
+  K8s 내부(service)  : curl web.apisample:5004
+  K8s 외부(nodeport) : curl 34.64.132.164:30000      
+```
+- Test 동적 API
+```
+
+ URI4 : /sync_tasks/api_id
+        - 용도 : 동기식 API sample
+	- 로직 : 1초 sleep 후 응답  / api_id는 client에서 동적으로 전달 가능
+	- 요청(IN) : get callback_uri
+	- 리턴(OUT): 200, api_id (client가 던진)
+	- 예) curl URI/sync_tasks/api11
+	    
+
+
+ URI5 : /callback_tasks/api_id	
+        - 용도 : 비동기식 API sample
+	- 로직 : 10초 sleep 후 응답  / api_id는 client에서 동적으로 전달 가능        
+	- 요청(IN) : post callback_uri
+	- 리턴(OUT): 200, task_id, api_id
+	- 예) curl URI/callback_tasks/api_id
+	     post {"callback_uri" : "http://www.naver.com" }	=> test Service
+
+```
