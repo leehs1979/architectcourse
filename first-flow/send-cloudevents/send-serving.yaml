@@ -1,0 +1,10 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+ name: send-serving
+ namespace: default
+spec:
+ template:
+  spec:
+   containers:
+    - image: jhc4guru/send-serving:1.0

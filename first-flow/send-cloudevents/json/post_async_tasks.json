@@ -1,0 +1,13 @@
+{
+    "targetURL" : "http://34.64.132.164:30000",    
+    "targetAPI" : "/callback_tasks",
+    "headers" : {
+        "Content-type" : "application/json",
+        "Header1" : "Header1",
+        "Header2" : "Header2"
+    },
+    "body" : {
+        "callback_uri" : "http://34.64.137.107/event/callback",
+        "host" : "send-serving.default.example.com"
+    }
+}

@@ -9,10 +9,48 @@ app = Flask(__name__)
 api = Api(app)
 
 
-@api.route('/event')  # url pattern으로 name 설정
-class CreateEvent(Resource):
+@api.route('/test')
+class TestEvent(Resource):
+    def get(self):
+        return {"message" : "Welcome, Get Event"}
+    def post(self):
+        return {"message" : "Welcome, Post Event"}
+
+@api.route('/sync')  # url pattern으로 name 설정
+class SyncTasks(Resource):
     def get(self):  
-        return {"message" : "Welcome, Event"}
+        req_data = request.get_json()
+        targetURL = req_data['targetURL']
+        targetAPI = req_data['targetAPI']
+        headers = req_data['headers']
+        body = req_data['body']
+        print(targetURL)
+        print(targetAPI)
+        print(headers)
+        print(body)
+
+        res = requests.get(targetURL+targetAPI, headers=headers, data=body)
+        #print(res.json())
+        return res.json()
+
+    def post(self):  
+        req_data = request.get_json()
+        targetURL = req_data['targetURL']
+        targetAPI = req_data['targetAPI']
+        headers = req_data['headers']
+        body = req_data['body']
+        print(targetURL)
+        print(targetAPI)
+        print(headers)
+        print(body)
+        json_data=json.dumps(body)
+
+        res = requests.post(targetURL+targetAPI, headers=headers, data=json_data)
+        
+        return res.json()
+
+@api.route('/async')  # url pattern으로 name 설정
+class ASyncTasks(Resource):
     def post(self):  
         type_header = request.headers.get('Content-type')
         print(type_header)
@@ -37,17 +75,19 @@ class CreateEvent(Resource):
 @api.route('/event/callback')  # url pattern으로 name 설정
 class EventCallback(Resource):
     def get(self):  
-        return {"message" : "Welcome, EventCallback"}
+        return {"message" : "Welcome, EventCallback"}, 200
 
     def post(self):  
         #type_header = request.headers.get('Content-type')
         #url = request.json.get('targetURL')
         #api = request.json.get('API')
 
-        body = jsonify(request.json)
-        result = request.json.get('result')
+        data = request.get_json()
+        #print(json.dumps(data))
+        #res = json.dumps(data)
 
-        return jsonify({'result' : result})
+        return data, 200
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=8000)
+    #app.run(debug=True, host='0.0.0.0', port=8000)
+    app.run(debug=True, host='0.0.0.0', port=8080)

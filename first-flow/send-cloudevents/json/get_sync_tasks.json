@@ -1,0 +1,15 @@
+{
+    "targetURL" : "http://34.64.132.164:30000",    
+    "targetAPI" : "/sync_tasks/abcdevflake",
+    "headers" : {
+        "Content-type" : "application/json",
+        "Header1" : "Header1",
+        "Header2" : "Header2"
+    },
+    "body" : {
+        "callback-url" : "http://send-cloudevent:8000",
+        "callback-api" : "/event/callback",
+        "parameter2" : "parameter2",
+        "parameter3" : "parameter3"
+    }
+}
