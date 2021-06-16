@@ -1,4 +1,109 @@
-## Flow Concept
+## Flow Concept(2021.06.16)
+Sync : curl(VM) -> Send serving(K8S) -> API Sample(http://34.64.132.164:30000)
+ASync : curl(VM) -> Send serving(K8S) -> Broker -> Receive Serving -> API Sample(http://34.64.132.164:30000)
+
+## 1. ./send-cloudevents/send-serving.yml
+- 기존의 send-cloudevents 를 확장하여 Knative Serving 으로 제공
+```
+kubectl get ksvc send-serving 명령어로 배포 결과 확인 가능
+NAME                         URL                                                     LATESTCREATED                      LATESTREADY                        READY   REASON
+send-serving                 http://send-serving.default.example.com                 send-serving-00001                 send-serving-00001                 True
+=> 특이사항 default 로 배포시 serving 에서는 http 8080 포트 체크를 함
+=> python 이 8080 으로 서비스하지 않는다면 설정 변경 필요
+```
+
+- knative serving 으로 제공시 istio ingress gateway를 통하여 호출이 되어야 함
+```
+jhyun82_choi@cloudshell:~$ kubectl get svc istio-ingressgateway -n istio-system
+NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                                                                      AGE
+istio-ingressgateway   LoadBalancer   10.100.35.96   34.64.137.107   15021:31864/TCP,80:32151/TCP,443:31539/TCP,15012:32215/TCP,15443:32023/TCP   2d21h
+```
+
+## 2. ./send-cloudevents/app.py
+- 콘솔 접속하여 아래와 같이 호출 가능
+- GET /sync API
+```
+curl -v http://34.64.137.107/sync \
+-X GET \
+-H "Host: send-serving.default.example.com" \
+-H "Content-Type: application/json" \
+-d @./get_sync_tasks.json
+
+get_sync_tasks.json 내용
+{
+    "targetURL" : "http://34.64.132.164:30000",
+    "targetAPI" : "/sync_tasks/abcdevflake",
+    "headers" : {
+        "Content-type" : "application/json",
+        "Header1" : "Header1",
+        "Header2" : "Header2"
+    },
+    "body" : {
+        "callback-url" : "http://send-cloudevent:8000",
+        "callback-api" : "/event/callback",
+        "parameter2" : "parameter2",
+        "parameter3" : "parameter3"
+    }
+}
+```
+- POST /sync
+```
+ex)
+ curl -v http://34.64.137.107/sync \
+-X POST \
+-H "Host: send-serving.default.example.com" \
+-H "Content-Type: application/json" \
+-d @./post_sync_tasks.json
+
+post_sync_tasks.json 내용
+{
+    "targetURL" : "http://34.64.132.164:30000",
+    "targetAPI" : "/tasks",
+    "headers" : {
+        "Content-type" : "application/json",
+        "Header1" : "Header1",
+        "Header2" : "Header2"
+    },
+    "body" : {
+        "type" : "10"
+    }
+}
+```
+
+- POST /async
+```
+curl -v http://34.64.137.107/async \
+-X POST \
+-H "Host: send-serving.default.example.com" \
+-H "Content-Type: application/json" \
+-d @./post_async_tasks.json
+
+post_async_tasks.json 내용
+{
+    "targetURL" : "http://34.64.132.164:30000",
+    "targetAPI" : "/callback_tasks",
+    "headers" : {
+        "Content-type" : "application/json",
+        "Header1" : "Header1",
+        "Header2" : "Header2"
+    },
+    "body" : {
+        "callback_uri" : "http://34.64.137.107/event/callback",
+        "host" : "send-serving.default.example.com"
+    }
+}
+```
+- POST /event/callback
+```
+호출시 header 값에 host 로 전달된 send-serving.default.example.com 값이 설정되어 있어야 함
+curl -v http://34.64.137.107/event/callback \
+-X POST \
+-H "Host: send-serving.default.example.com" \
+-H "Content-Type: application/json" \
+-d @./post_async_tasks.json
+```
+========================================================================================================================================================
+## Flow Concept(before 2021.06.15)
 
 curl -> Send cloud event -> Broker -> Receive cloud event -> External
 
