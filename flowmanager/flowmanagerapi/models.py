@@ -73,8 +73,8 @@ class FLOW_JOB(models.Model):
     api_output = models.TextField(max_length=1000, null=True, blank=True)    # json : output
     api_status = models.CharField(max_length=50, null=True, blank=True)
     
-    api_start_dt = models.DateTimeField(auto_now=True, verbose_name="start time")
-    api_end_dt = models.DateTimeField(auto_now=True, verbose_name="end time")    
+    api_start_dt = models.DateTimeField(auto_now=False, null=True, verbose_name="start time")
+    api_end_dt = models.DateTimeField(auto_now=False, null=True, verbose_name="end time")    
         
     creator = models.CharField(max_length=50, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name="date create")
