@@ -20,7 +20,7 @@ istio-ingressgateway   LoadBalancer   10.100.35.96   34.64.137.107   15021:31864
 ```
 
 ## 2. ./send-cloudevents/app.py
-- 콘솔 접속하여 아래와 같이 호출 가능
+- 콘솔 접속하여 istio ingress gw ip 를 통하여 host 헤더 설정 후 호출 가능
 - GET /sync API
 ```
 curl -v http://34.64.137.107/sync \
