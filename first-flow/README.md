@@ -1,6 +1,6 @@
 ## Flow Concept(2021.06.16)
-Sync : curl(VM) -> Send serving(K8S) -> API Sample(http://34.64.132.164:30000)
-ASync : curl(VM) -> Send serving(K8S) -> Broker -> Receive Serving -> API Sample(http://34.64.132.164:30000)
+- Sync : curl(VM) -> Send serving(K8S) -> API Sample(http://34.64.132.164:30000)
+- ASync : curl(VM) -> Send serving(K8S) -> Broker -> Receive Serving -> API Sample(http://34.64.132.164:30000)
 
 ## 1. ./send-cloudevents/send-serving.yml
 - 기존의 send-cloudevents 를 확장하여 Knative Serving 으로 제공
