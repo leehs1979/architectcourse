@@ -81,3 +81,26 @@ class FLOW_JOB(models.Model):
 
     class Meta:
         ordering = ['created']                        
+        
+class CHECK_JOB(models.Model):
+    
+    # PK
+    check_job_id = models.UUIDField(verbose_name="checkid",primary_key=True, default=uuid.uuid4, editable=False)
+    
+    # FK
+    flow_job = models.ForeignKey(FLOW_JOB, on_delete=models.CASCADE)         # flow_job_id, Async Sender T/O Check
+    
+    check_start_dt = models.DateTimeField(auto_now=False, null=True, verbose_name="start time")
+    check_end_dt = models.DateTimeField(auto_now=False, null=True, verbose_name="end time")
+    
+    check_status = models.CharField(max_length=50, null=True, blank=True)   # Apscheduler status
+    
+    checker_id = models.CharField(max_length=50, null=True, blank=True)     # Apscheduler id for canceling t/o scheduler in case of normal
+    
+    creator = models.CharField(max_length=50, null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True, verbose_name="date create")
+
+    class Meta:
+        ordering = ['created']  
+    
+    

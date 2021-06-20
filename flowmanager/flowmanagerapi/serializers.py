@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from flowmanagerapi.models import FLOW, FLOW_DTL, API, FLOW_JOB
+from flowmanagerapi.models import FLOW, FLOW_DTL, API, FLOW_JOB, CHECK_JOB
 from django.contrib.auth.models import User
 
 class FLOWSerializer(serializers.ModelSerializer):
@@ -25,6 +25,12 @@ class FLOW_JOBSerializer(serializers.ModelSerializer):
     class Meta:
         model = FLOW_JOB
         fields = '__all__'
+
+class CHECK_JOBSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = CHECK_JOB
+        fields = '__all__'        
 
 class UserSerializer(serializers.ModelSerializer):
     

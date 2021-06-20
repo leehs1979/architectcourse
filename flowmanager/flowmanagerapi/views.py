@@ -1,8 +1,8 @@
 from django.shortcuts import render
 
-from flowmanagerapi.models import FLOW, FLOW_DTL, API, FLOW_JOB
+from flowmanagerapi.models import FLOW, FLOW_DTL, API, FLOW_JOB, CHECK_JOB
 from django.contrib.auth.models import User
-from flowmanagerapi.serializers import FLOWSerializer, FLOW_DTLSerializer, APISerializer, FLOW_JOBSerializer, UserSerializer
+from flowmanagerapi.serializers import FLOWSerializer, FLOW_DTLSerializer, APISerializer, FLOW_JOBSerializer, CHECK_JOBSerializer, UserSerializer
 
 from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
@@ -32,13 +32,37 @@ class FLOWViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['flow_nm', 'creator']
     search_fields = ['flow_nm']
+
+class FLOW_DTLViewSet(viewsets.ModelViewSet):
+    queryset = FLOW_DTL.objects.all()
+    serializer_class = FLOW_DTLSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['flow', 'creator']
+
+class APIViewSet(viewsets.ModelViewSet):
+    queryset = API.objects.all()
+    serializer_class = APISerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    filterset_fields = ['api_nm', 'creator']
+    search_fields = ['api_nm']
+
+class FLOW_JOBViewSet(viewsets.ModelViewSet):
+    queryset = FLOW_JOB.objects.all()
+    serializer_class = FLOW_JOBSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['api_status', 'creator']
+    
+class CHECK_JOBViewSet(viewsets.ModelViewSet):
+    queryset = CHECK_JOB.objects.all()
+    serializer_class = CHECK_JOBSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['check_status', 'creator']
     
     def job(self, args):
         print("I'm working..."+args, "| [time] "
           , str(time.localtime().tm_hour) + ":"
           + str(time.localtime().tm_min) + ":"
           + str(time.localtime().tm_sec))
-
 
     def job_2(self):
         print("Job2 실행: ", "| [time] "
@@ -52,13 +76,27 @@ class FLOWViewSet(viewsets.ModelViewSet):
         
         # TODO: Timeout 
     
-    @action(methods=['post'], detail=False)
-    def schedule(self, request, pk=None):
+    def create(self, request, *args, **kwargs):   # TODO: Apscheduler Set
+        
+        print("Test create override called")
+                
+        self.serializer_class = self.serializer_class
+        
+        # TODO: Hooking Point
+        
+        return super().create(request, *args, **kwargs)
+        '''
+        
         try:    
             
             # test
             print("schedule called")
-
+            testFlag = True
+            if testFlag:
+                raise Exception('Test')
+            
+            # APScheduler call 하고 나머지는 그대로 입력한다.
+            
             # date : 1번만 실행
             # 현재 시간 + 30초(Timeout)
             flow_id = str(datetime.now())
@@ -81,8 +119,7 @@ class FLOWViewSet(viewsets.ModelViewSet):
             # user = User.objects.get(username=username)
 
             # user.is_active = False
-            # user.save()         
-           
+            # user.save() 
            
             response = {'message': 'schedule is done successfully', 'result': 'result__'}
             return Response(response, status = status.HTTP_200_OK)
@@ -91,26 +128,20 @@ class FLOWViewSet(viewsets.ModelViewSet):
             logger.error('Error Occured while processing schedule : %s' % ex)
                     
             response = {'message': 'schedule failed.'}            
-            return Response(response, status = status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-class FLOW_DTLViewSet(viewsets.ModelViewSet):
-    queryset = FLOW_DTL.objects.all()
-    serializer_class = FLOW_DTLSerializer
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['flow', 'creator']
-
-class APIViewSet(viewsets.ModelViewSet):
-    queryset = API.objects.all()
-    serializer_class = APISerializer
-    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    filterset_fields = ['api_nm', 'creator']
-    search_fields = ['api_nm']
-
-class FLOW_JOBViewSet(viewsets.ModelViewSet):
-    queryset = FLOW_JOB.objects.all()
-    serializer_class = FLOW_JOBSerializer
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['api_status', 'creator']
+            return Response(response, status = status.HTTP_500_INTERNAL_SERVER_ERROR) 
+        '''
+    
+    # https://tech.serhatteker.com/post/2020-09/enable-partial-update-drf/
+    # 호출시 ID를 주어야 한다. DELETE도 마찬가지
+    def update(self, request, *args, **kwargs): 
+        
+        print("update called")
+        
+        kwargs['partial'] = True
+        
+        # TODO: Apscheduler Status Set
+        
+        return super().update(request, *args, **kwargs)
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()

@@ -13,11 +13,13 @@ from rest_framework.routers import DefaultRouter
 # Create a router and register our viewsets with it.
 router = DefaultRouter()  #  automatically creates the API root view
 router.register(r'flow', views.FLOWViewSet)
-router.register(r'flow/schedule', views.FLOWViewSet)
+# router.register(r'flow/schedule', views.FLOWViewSet)
 
 router.register(r'flow_dtl', views.FLOW_DTLViewSet)
 router.register(r'api', views.APIViewSet)
 router.register(r'flow_job', views.FLOW_JOBViewSet)
+
+router.register(r'check_job', views.CHECK_JOBViewSet)   # TODO: Check CRUD Override
 
 # For user
 router.register(r'user', views.UserViewSet)
