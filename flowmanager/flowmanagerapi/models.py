@@ -75,6 +75,8 @@ class FLOW_JOB(models.Model):
     
     api_start_dt = models.DateTimeField(auto_now=False, null=True, verbose_name="start time")
     api_end_dt = models.DateTimeField(auto_now=False, null=True, verbose_name="end time")    
+    
+    run_job_id = models.CharField(max_length=50, null=True, blank=True)     # Apscheduler id for canceling t/o scheduler in case of normal
         
     creator = models.CharField(max_length=50, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name="date create")
