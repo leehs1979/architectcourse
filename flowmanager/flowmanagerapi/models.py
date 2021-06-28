@@ -51,6 +51,7 @@ class FLOW_DTL(models.Model):
     
     api_timeout = models.PositiveIntegerField(default=10)   # second
     api_retry = models.PositiveIntegerField(default=3)      # count
+    is_last = models.CharField(max_length=1, default='N')   # last service
     
     creator = models.CharField(max_length=50, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name="date create")
@@ -68,15 +69,20 @@ class FLOW_JOB(models.Model):
     
     # FK
     flow_dtl = models.ForeignKey(FLOW_DTL, on_delete=models.CASCADE)         # flow_dtl_id, ERD 상의 seq(FK) 대신 사용
+    
+    # 아래 사용 불가
+    #flow = models.ForeignKey(FLOW, on_delete=models.CASCADE)                 # flow_id
+    #api = models.ForeignKey(API, on_delete=models.CASCADE)                   # api_id
+    #api_seq = models.ForeignKey(FLOW_DTL, on_delete=models.CASCADE, to_field="api_seq", db_column="api_seq")
         
     api_input = models.TextField(max_length=1000, null=True, blank=True)     # json : input
     api_output = models.TextField(max_length=1000, null=True, blank=True)    # json : output
     api_status = models.CharField(max_length=50, null=True, blank=True)
     
-    api_start_dt = models.DateTimeField(auto_now=False, null=True, verbose_name="start time")
-    api_end_dt = models.DateTimeField(auto_now=False, null=True, verbose_name="end time")    
+    api_start_dt = models.DateTimeField(auto_now=False, null=True, blank=True, verbose_name="start time")
+    api_end_dt = models.DateTimeField(auto_now=False, null=True, blank=True, verbose_name="end time")    
     
-    run_job_id = models.CharField(max_length=50, null=True, blank=True)     # Apscheduler id for canceling t/o scheduler in case of normal
+    run_job_id = models.CharField(max_length=50, null=True, blank=True)     # For runtime
         
     creator = models.CharField(max_length=50, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name="date create")
@@ -92,8 +98,8 @@ class CHECK_JOB(models.Model):
     # FK
     flow_job = models.ForeignKey(FLOW_JOB, on_delete=models.CASCADE)         # flow_job_id, Async Sender T/O Check
     
-    check_start_dt = models.DateTimeField(auto_now=False, null=True, verbose_name="start time")
-    check_end_dt = models.DateTimeField(auto_now=False, null=True, verbose_name="end time")
+    check_start_dt = models.DateTimeField(auto_now=False, null=True, blank=True, verbose_name="start time")
+    check_end_dt = models.DateTimeField(auto_now=False, null=True, blank=True, verbose_name="end time")
     
     check_status = models.CharField(max_length=50, null=True, blank=True)   # Apscheduler status
     
