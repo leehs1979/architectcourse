@@ -14,7 +14,9 @@ class SyncTasks(Resource):
     # POST 사용한다.
     def post(self):
         
-        print('TEST POST')
+        print('initiator TEST POST')
+        req_data = request.get_json()
+        print(req_data)
         
         # TODO: 변경할 것
         '''

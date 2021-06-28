@@ -38,6 +38,7 @@ class FLOW_DTLViewSet(viewsets.ModelViewSet):
     serializer_class = FLOW_DTLSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['flow', 'creator']
+    search_fields = ['flow']
 
 class APIViewSet(viewsets.ModelViewSet):
     queryset = API.objects.all()
