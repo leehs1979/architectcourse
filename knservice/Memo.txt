@@ -1,0 +1,72 @@
+* initiator 호출 
+{
+    "flow_id": "a138634c-29d1-43cb-9e41-99dbc911e777",
+    "in_data": { "type": 1 },
+    "api_seq": 0,
+    "run_job_id": "test1_runtime",
+    "final_result_callback": "http://172.16.1.110:19000/callback_post",
+    "ksvc_uri": "http://172.16.1.110:18081"
+}
+
+* sync 호출
+http://172.16.1.110:18081
+
+- initiator 에서 그대로 온다.
+{
+    "flow_id": "a138634c-29d1-43cb-9e41-99dbc911e777",
+    "in_data": { "type": 1 },
+    "api_seq": 0,
+    "run_job_id": "test1_runtime",
+    "final_result_callback": "http://172.16.1.110:19000/callback_post",
+    "ksvc_uri": "http://172.16.1.110:18081"
+}
+
+* targetURI : (GET) http://172.16.1.110:19000/ 가정 - 5초 후에 리턴
+* final_result_callback : (POST)http://172.16.1.110:19000/callback_post 가정
+
+* Code Snippets
+
+'''
+# FLOW_JOB TEST : OK
+payload = {
+    "flow_job_id": "e0174d75-0dea-4969-b249-9bb38bd81889",
+    "api_input": "{ type:1 }",
+    "api_output": "",
+    "api_status": "STARTED",
+    "api_start_dt": "2021-06-28T14:09:00Z",
+    "api_end_dt": "",
+    "run_job_id": "TestFlow_RUNTIME",
+    "creator": "Leehs",
+    "created": "2021-06-28T05:09:38.924374Z",
+    "flow_dtl": "ed9a1829-5874-48a8-8dfa-c100d1f1e8ce"
+}
+
+payload_json = json.dumps(payload)
+print(payload_json)
+headers = {'Content-Type': 'application/json; charset=utf-8'}
+
+res = requests.post("http://172.16.1.110:17000/", headers=headers, data=payload_json)
+'''
+
+
+# 사용할 경우 swagger 페이지를 사용하지 않아야 한다. POST 사용
+'''
+def get(self):
+    
+    print('TEST GET')
+    
+    req_data = request.get_json()
+    targetURL = req_data['targetURL']
+    targetAPI = req_data['targetAPI']
+    headers = req_data['headers']
+    body = req_data['body']
+    print(targetURL)
+    print(targetAPI)
+    print(headers)
+    print(body)
+
+    res = requests.get(targetURL+targetAPI, headers=headers, data=body)
+    return res.json()
+    
+    return 200
+'''

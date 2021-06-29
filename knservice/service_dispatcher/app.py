@@ -85,37 +85,38 @@ class SyncTasks(Resource):
         service['api_in_format'] = api_result['api_in_format']
         
         #print(service)
-        
-        '''
-        # FLOW_JOB TEST : OK
-        payload = {
-            "flow_job_id": "e0174d75-0dea-4969-b249-9bb38bd81889",
-            "api_input": "{ type:1 }",
-            "api_output": "",
-            "api_status": "STARTED",
-            "api_start_dt": "2021-06-28T14:09:00Z",
-            "api_end_dt": "",
-            "run_job_id": "TestFlow_RUNTIME",
-            "creator": "Leehs",
-            "created": "2021-06-28T05:09:38.924374Z",
-            "flow_dtl": "ed9a1829-5874-48a8-8dfa-c100d1f1e8ce"
-        }
-        
-        payload_json = json.dumps(payload)
-        print(payload_json)
-        headers = {'Content-Type': 'application/json; charset=utf-8'}
-        
-        res = requests.post("http://172.16.1.110:17000/", headers=headers, data=payload_json)
-        '''
                 
         # Step5 : 구분하여 service 호출
         service_result = []
         if service['api_type'] == 'sync':   # sync
 
-            #TODO: Step 5-1: in_data 준비 (원래는 자동화 - service['api_in_format']을 읽어서 만듦)
+            # Step 5-1: in_data 준비 (사용자가 api를 읽어서 맞춰 보낸다고 가정한다.)
+            # service['api_in_format'] : json 형태의 사용자 데이터이다.
             
-            #TODO: Step 5-2: service 호출(POST), timeout 설정, retry 만큼 시도
             
+            #Step 5-2: (1) service 호출(POST)
+            #TODO:     (2) timeout 설정, retry 만큼 시도
+            # api-sample 서비스 올려서 테스트 해보자 : 우선 로컬에서
+            
+            # GET : OK
+            service_res = requests.get(service['api_uri'])
+            print("service status_code = ", service_res.json()) # json 형태의 리턴을 가정한다.
+            service_res_data = service_res.json()
+            
+            # POST : POST Call로 가정한다.
+            '''
+            temp_in_data = {
+                "type": 1                
+            }
+            payload_json = json.dumps(temp_in_data)
+            headers = {'Content-Type': 'application/json; charset=utf-8'}            
+                        
+            res = requests.post(service['api_uri'], headers=headers, data=payload_json)
+            print("service status_code = ", res.status_code)
+            res_data = res.json()
+            print("service flow_job result = ", res_data)
+            '''
+                        
             #Step 5-3: flowmanager에 start 시간 전송 - flow_job 생성(json format)
             # "api_input": "{ type:1 }",
             # "api_status": "STARTED",
@@ -147,8 +148,9 @@ class SyncTasks(Resource):
             flow_job_id = res_data['flow_job_id']           
             
                         
-            #TODO: Step 5-4: service 호출(POST) 응답확인
-            
+            #Step 5-4: service 호출(POST) 응답확인
+            #json 형태의 리턴에서 'result'를 결과값으로 가정한다.
+            next_in_data = service_res_data['result']            
             
             #Step 5-5: flowmanager에 end 시간, SUCCESS/FAILURE 전송
             
@@ -181,23 +183,24 @@ class SyncTasks(Resource):
             # Next Service 호출이 있으면(is_last='N') api_seq = api_seq+1
             # 응답 데이터를 api_in으로 재처리하여 전달
             # ksvc uri를 호출해야 한다.
-            next_service_uri = ""
-            #ksvc_uri = ""
-            #final_result_callback = ""
-            out_data = ""   # API 호출 결과            
+            # async의 경우 api_out에 이 정보를 임시저장하고 Receiver에서 사용한다.
+                        
+            out_data = next_in_data   # API 호출 결과            
             
             payload = {
                 "flow_id": flow_id,
                 "in_data": out_data,
                 "api_seq": api_seq + 1,
                 "run_job_id": run_job_id,
-                "final_result_callback": final_result_callback,
+                "final_result_callback": final_result_callback,     # 최종 callback 정해주고 테스트하자.
                 "ksvc_uri": ksvc_uri
             }
             
-            ksvc_uri = "http://172.16.1.110:18081"
+            print(payload)
             
-            # 마지막이면? 최종 결과값을 받을 callback으로 보내준다.
+            next_service_uri = ""
+            
+            # 마지막 서비스이면 최종 결과값을 받을 callback으로 보내준다.
             if service['is_last'] == 'Y':
                 next_service_uri = final_result_callback
             else: 
@@ -209,33 +212,21 @@ class SyncTasks(Resource):
             res = requests.post(next_service_uri, headers=headers, data=payload_json)
             print("status_code = ", res.status_code)
             
-        else:                               #TODO: async
+        else:                               # async sender
             print("async logic")
-                       
+            #flow_job 생성 이전까지의 로직은 공유한다.
+            
+            #TODO: flowmanager에 flow_job을 생성한다.
+            
+            #TODO: 서비스 호출 시에 callback uri(ASyncReceiver)에 flow_job_id를 붙여서 보낸다.
+            #      "callback" : "http://service_ip:port/<flow_job_id>" 가 리턴받을 callback_uri이다.(이대로 달라고 한다.)
+            #TODO: Timeout, retry 등을 설정한다.
+            
+            #TODO: flowmanager flow_job의 api_output에 다음 호출 정보 등의 payload 부분을 저장한다.
+            
+            #다음 서비스 호출없이 종료한다.
         
         return 200
-    
-    # 사용할 경우 swagger 페이지를 사용하지 않아야 한다. POST 사용
-    '''
-    def get(self):
-        
-        print('TEST GET')
-        
-        req_data = request.get_json()
-        targetURL = req_data['targetURL']
-        targetAPI = req_data['targetAPI']
-        headers = req_data['headers']
-        body = req_data['body']
-        print(targetURL)
-        print(targetAPI)
-        print(headers)
-        print(body)
-
-        res = requests.get(targetURL+targetAPI, headers=headers, data=body)
-        return res.json()
-        
-        return 200
-    '''
     
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=18081)
