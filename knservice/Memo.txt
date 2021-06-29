@@ -1,3 +1,31 @@
+<TODO> 비동기 서비스 주소를 바꿔주어야 한다. 현재 같음
+
+1. 테스트 - sync1 - sync2 - async1 - sync3 : 결과 - OK
+
+{
+    "flow_id": "a138634c-29d1-43cb-9e41-99dbc911e777",
+    "in_data": { "type": 1 },
+    "api_seq": 0,
+    "run_job_id": "test1_runtime",
+    "final_result_callback": "http://172.16.1.110:19000/callback_post",
+    "service_dispatcher_uri": "http://172.16.1.110:18081",
+    "service_async_receiver_uri": "http://172.16.1.110:18082"
+}
+
+
+2. 테스트 - sync1 - sync2 - sync3 : 결과 - OK
+
+{
+    "flow_id": "0af0714b-5896-4894-b0ce-ab02ac570608",
+    "in_data": { "type": 1 },
+    "api_seq": 0,
+    "run_job_id": "test2_runtime",
+    "final_result_callback": "http://172.16.1.110:19000/callback_post",
+    "service_dispatcher_uri": "http://172.16.1.110:18081",
+    "service_async_receiver_uri": "http://172.16.1.110:18082"
+}
+
+
 * initiator 호출 
 {
     "flow_id": "a138634c-29d1-43cb-9e41-99dbc911e777",

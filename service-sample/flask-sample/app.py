@@ -3,11 +3,17 @@ import time
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
     time.sleep(5)   # seconds
     #return 'Hello Flask'
     return jsonify({"result": "Hello Flask"}), 202
+
+@app.route('/', methods=['POST'])
+def index_post():
+    time.sleep(5)   # seconds
+    #return 'Hello Flask'
+    return jsonify({"result": "POST RESULT"}), 202
     
 @app.route('/info')
 def info():

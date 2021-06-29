@@ -15,7 +15,7 @@ class ServiceDispatcher(Resource):
     # POST 사용한다.
     def post(self):       
         
-        print('TEST POST')
+        print('[START] ServiceDispatcher')
         
         flowmanager_url = "http://127.0.0.1:28000/api/"
         
@@ -28,12 +28,13 @@ class ServiceDispatcher(Resource):
         # initiator에서 최초 넘어오는 데이터
         '''
         {
-            "flow_id": "a138634c-29d1-43cb-9e41-99dbc911e777",
-            "in_data": {},
+            "flow_id": "0af0714b-5896-4894-b0ce-ab02ac570608",
+            "in_data": { "type": 1 },
             "api_seq": 0,
-            "run_job_id": "test1_runtime",
-            "final_result_callback": "",
-            "ksvc_uri": ""
+            "run_job_id": "test2_runtime",
+            "final_result_callback": "http://172.16.1.110:19000/callback_post",
+            "service_dispatcher_uri": "http://172.16.1.110:18081",
+            "service_async_receiver_uri": "http://172.16.1.110:18082"
         }
         '''
         
@@ -42,7 +43,9 @@ class ServiceDispatcher(Resource):
         api_seq = req_data['api_seq']   # 1, 2, 3 순서를 가정한다.
         run_job_id = req_data['run_job_id']   # runtime id
         final_result_callback = req_data['final_result_callback']
-        ksvc_uri = req_data['ksvc_uri']
+        
+        service_dispatcher_uri = req_data['service_dispatcher_uri']
+        service_async_receiver_uri = req_data['service_async_receiver_uri']
         
         #print('flow_id:'+flow_id)
         
@@ -55,14 +58,13 @@ class ServiceDispatcher(Resource):
         # initiator에서 처음에 오면 api_seq == 0, api_seq가 1이 되어야 함
         # Next Service 호출시 있으면(is_last) api_seq 붙임, 현재+1
         if api_seq == 0:
-            print("Call by initiator")
+            print("Call by flow_initiator")
             api_seq = api_seq + 1       # current sequence
         
         service = {} 
         service['run_job_id'] = run_job_id
         
         for dtl in flow_dtl_result:
-            print(dtl['api_seq'], "--", api_seq)
             if dtl['api_seq'] == api_seq:
                 service['flow_dtl_id'] = dtl['flow_dtl_id']
                 service['api_timeout'] = dtl['api_timeout']
@@ -103,7 +105,7 @@ class ServiceDispatcher(Resource):
             print("service status_code = ", service_res.json()) # json 형태의 리턴을 가정한다.
             service_res_data = service_res.json()
             
-            # POST : POST Call로 가정한다.
+            # TODO: POST : POST Call로 가정한다.
             '''
             temp_in_data = {
                 "type": 1                
@@ -111,10 +113,10 @@ class ServiceDispatcher(Resource):
             payload_json = json.dumps(temp_in_data)
             headers = {'Content-Type': 'application/json; charset=utf-8'}            
                         
-            res = requests.post(service['api_uri'], headers=headers, data=payload_json)
-            print("service status_code = ", res.status_code)
-            res_data = res.json()
-            print("service flow_job result = ", res_data)
+            service_res = requests.post(service['api_uri'], headers=headers, data=payload_json)
+            print("service status_code = ", service_res.status_code)
+            service_res_data = service_res.json()
+            print("service flow_job result = ", service_res_data)
             '''
                         
             #Step 5-3: flowmanager에 start 시간 전송 - flow_job 생성(json format)
@@ -145,8 +147,7 @@ class ServiceDispatcher(Resource):
             res_data = res.json()
             #print("flow_job result = ", res_data)
             
-            flow_job_id = res_data['flow_job_id']           
-            
+            flow_job_id = res_data['flow_job_id']
                         
             #Step 5-4: service 호출(POST) 응답확인
             #json 형태의 리턴에서 'result'를 결과값으로 가정한다.
@@ -172,12 +173,13 @@ class ServiceDispatcher(Resource):
             # 넘겨줘야 하는 데이터
             '''
             {
-                "flow_id": "a138634c-29d1-43cb-9e41-99dbc911e777",
-                "in_data": {},
+                "flow_id": "0af0714b-5896-4894-b0ce-ab02ac570608",
+                "in_data": { "type": 1 },
                 "api_seq": 0,
-                "run_job_id": "test1_runtime",
-                "final_result_callback": "",
-                "ksvc_uri": ""
+                "run_job_id": "test2_runtime",
+                "final_result_callback": "http://172.16.1.110:19000/callback_post",
+                "service_dispatcher_uri": "http://172.16.1.110:18081",
+                "service_async_receiver_uri": "http://172.16.1.110:18082"
             }
             '''
             # Next Service 호출이 있으면(is_last='N') api_seq = api_seq+1
@@ -187,16 +189,17 @@ class ServiceDispatcher(Resource):
                         
             out_data = next_in_data   # API 호출 결과            
             
-            payload = {
+            next_service_data = {
                 "flow_id": flow_id,
                 "in_data": out_data,
                 "api_seq": api_seq + 1,
                 "run_job_id": run_job_id,
-                "final_result_callback": final_result_callback,     # 최종 callback 정해주고 테스트하자.
-                "ksvc_uri": ksvc_uri
+                "final_result_callback": final_result_callback,
+                "service_dispatcher_uri": service_dispatcher_uri,
+                "service_async_receiver_uri": service_async_receiver_uri
             }
             
-            print(payload)
+            print(next_service_data)
             
             next_service_uri = ""
             
@@ -204,27 +207,81 @@ class ServiceDispatcher(Resource):
             if service['is_last'] == 'Y':
                 next_service_uri = final_result_callback
             else: 
-                next_service_uri = ksvc_uri
+                next_service_uri = service_dispatcher_uri
             
-            payload_json = json.dumps(payload)
+            next_service_data_json = json.dumps(next_service_data)
             headers = {'Content-Type': 'application/json; charset=utf-8'}
             
-            res = requests.post(next_service_uri, headers=headers, data=payload_json)
+            res = requests.post(next_service_uri, headers=headers, data=next_service_data_json)
             print("status_code = ", res.status_code)
             
         else:                               # async sender
-            print("async logic")
-            #flow_job 생성 이전까지의 로직은 공유한다.
+            print("[START] Async Logic")
+            # Step 5-1: in_data 준비 (사용자가 api를 읽어서 맞춰 보낸다고 가정한다.)
+            # service['api_in_format'] : json 형태의 사용자 데이터이다.
+            # TODO: 후순위            
+                                              
+            # Step 5-2: flowmanager에 flow_job을 생성한다. - start 시간 전송
+            # flowmanager flow_job의 api_output에 다음 호출 정보 등의 payload 부분을 저장한다.(먼저 수행)
             
-            #TODO: flowmanager에 flow_job을 생성한다.
+            next_service_data = {
+                "flow_id": flow_id,
+                "in_data": "",                      # async_receiver에서 설정한다.(비동기 응답 받아야 한다.)
+                "api_seq": api_seq + 1,
+                "run_job_id": run_job_id,
+                "final_result_callback": final_result_callback,
+                "service_dispatcher_uri": service_dispatcher_uri,
+                "service_async_receiver_uri": service_async_receiver_uri,
+                "is_last": service['is_last']       # async_receiver에서 사용한다.(현재꺼, 다음 서비스 호출여부)
+            }
             
-            #TODO: 서비스 호출 시에 callback uri(ASyncReceiver)에 flow_job_id를 붙여서 보낸다.
+            payload = {
+                "api_input": "{ type:1 }",
+                "api_output": json.dumps(next_service_data),    # receiver에서 사용해야 한다.
+                "api_status": "STARTED",
+                "api_start_dt": datetime.strftime(datetime.now(), '%Y-%m-%d %H:%M:%S.%f'),
+                "run_job_id": service['run_job_id'],
+                "creator": "Team2",
+                "flow_dtl": service['flow_dtl_id']
+            }
+            payload_json = json.dumps(payload)
+            headers = {'Content-Type': 'application/json; charset=utf-8'}
+            flow_job_uri = "flow_job/"
+                        
+            res = requests.post(flowmanager_url+flow_job_uri, headers=headers, data=payload_json)
+            print("status_code = ", res.status_code)
+            res_data = res.json()
+            print("flow_job result = ", res_data)
+            
+            flow_job_id = res_data['flow_job_id']
+            
+            # Step 5-3: (1) service 호출(POST)
+            # TODO:     (2) timeout 설정, retry 만큼 시도
+            
+            # 대상 서비스 호출은 POST, 비동기이므로 바로 response가 온다. 
+            # 서비스 호출 시에 callback uri(ASyncReceiver)에 flow_job_id를 붙여서 보낸다.
             #      "callback" : "http://service_ip:port/<flow_job_id>" 가 리턴받을 callback_uri이다.(이대로 달라고 한다.)
-            #TODO: Timeout, retry 등을 설정한다.
             
-            #TODO: flowmanager flow_job의 api_output에 다음 호출 정보 등의 payload 부분을 저장한다.
+            callback_uri = service_async_receiver_uri+"/?"+flow_job_id
+            print("callback_uri : ", callback_uri)
+            
+            api_in_data = {
+                "api_input": "{ type:1 }",      # TODO: 데이터 처리필요
+                "callback" : callback_uri
+            }
+            
+            api_in_data_json = json.dumps(api_in_data)
+            headers = {'Content-Type': 'application/json; charset=utf-8'} 
+            
+            print("service['api_uri'] : ", service['api_uri'])
+            
+            service_res = requests.post(service['api_uri'], headers=headers, data=api_in_data_json)
+            print("service status_code = ", service_res.status_code)    # 201 will return
             
             #다음 서비스 호출없이 종료한다.
+            print("[END]] Async Logic")
+        
+        print('[END] ServiceDispatcher')
         
         return 200
     
