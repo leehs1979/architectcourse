@@ -10,7 +10,7 @@ app = Flask(__name__)
 api = Api(app)
 
 @api.route('/')
-class SyncTasks(Resource):
+class ServiceDispatcher(Resource):
     
     # POST 사용한다.
     def post(self):       
