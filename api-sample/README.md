@@ -53,7 +53,7 @@ $ docker-compose up -d --build
 
  URI5 : /callback_tasks/api_id	
         - 용도 : 비동기식 API sample
-	- 로직 : 10초 sleep 후 응답  / api_id는 client에서 동적으로 전달 가능        
+	- 로직 : 10초 sleep callback 호출  / api_id는 client에서 동적으로 전달 가능        
 	- 요청(IN) : post callback_uri
 	- 리턴(OUT): 200, task_id, api_id
 	- 예) curl URI/callback_tasks/api_id
