@@ -60,3 +60,31 @@ $ docker-compose up -d --build
 	     post {"callback_uri" : "http://www.naver.com" }	=> test Service
 
 ```
+- Test Sample
+
+sync Call
+```
+curl "web.apisample:5004/sync_tasks/sync1" -X GET
+```
+sync return
+```
+{
+  "api_id": "sync1"
+}
+```
+
+async call
+```
+curl "web.apisample:5004/callback_tasks/async1" \
+-X POST \
+-H "Content-Type: application/json" \
+-d '{"callback_uri":"http://www.naver.com"}'
+```
+
+async return
+```
+{
+  "api_id": "async1",
+  "task_id": "46600c6e-e909-418a-ac3a-cecb348f0177"
+}
+```
