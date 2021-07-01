@@ -14,6 +14,70 @@ Flow_nm 규칙 : flow_{api개수}_{flow시퀀스}
 
 - Flow - API 매핑
 
+규칙 :    
+ api 개수만큼 sync - async를 반복적으로 구성 (api 개수는 짝수로 구성)   
+ timeout : sync->10초 / async->20초   
 
 ![image](https://user-images.githubusercontent.com/10610884/124053607-86993a00-da5b-11eb-84fc-c991697f810c.png)
 
+
+### 쿼리
+
+- Flow - API 맵핑 
+```
+insert into flowmanagerapi_flow_dtl
+select gen_random_uuid() as flow_dtl_id
+      ,ROW_NUMBER() OVER( PARTITION BY flow_nm) AS api_seq
+	  --, api_nm
+      ,api_timeout
+      ,3 as api_retry
+      ,'Leehs' as creator
+	  ,now() as created
+	  ,api_id
+	  ,flow_id
+	  --,'N' as is_last
+	  ,case when ROW_NUMBER() OVER( PARTITION BY flow_nm) = flow_desc::INTEGER then 'Y' else 'N' end as is_last -- flow api개수 
+from (
+	select a.flow_id
+		 , a.flow_nm
+		 , b.api_id
+		 , b.api_nm
+		 , case when b.api_type='sync' then 10 else 20 end as api_timeout --timeout 
+		 , a.flow_desc
+	from flowmanagerapi_flow a
+		,flowmanagerapi_api b
+	where b.api_desc::INTEGER <= a.flow_desc::INTEGER/2    -- api개수 / 2 
+	order by a.flow_nm,b.api_desc::INTEGER, b.api_nm desc
+) x ;
+
+```
+
+- 매핑 검증
+```
+select f.flow_nm, d.api_seq, a.api_nm, d.is_last, d.api_timeout, d.api_retry
+from flowmanagerapi_flow f
+,flowmanagerapi_api a
+,flowmanagerapi_flow_dtl d
+where f.flow_id = d.flow_id
+and   a.api_id = d.api_id
+and f.flow_nm ='flow_10_1';
+```
+
+- 초기화 
+
+```
+## schema 출력
+pg_dump -U team2 -t 'public.flowmanagerapi_flow_dtl' -t ' --schema-only mydb
+
+## 테이블 초기화 
+truncate table flowmanagerapi_flow_dtl  cascade ;
+truncate table flowmanagerapi_check_job cascade;
+truncate table flowmanagerapi_flow_job  cascade;
+truncate table flowmanagerapi_flow      cascade;
+truncate table flowmanagerapi_api       cascade;
+
+
+## 컬럼 추가 
+ALTER TABLE flowmanagerapi_flow_dtl ADD COLUMN is_last varchar(5);
+ 
+```
