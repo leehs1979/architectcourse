@@ -59,94 +59,90 @@ class CHECK_JOBViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['check_status', 'creator']
     
-    def job(self, args):
-        print("I'm working..."+args, "| [time] "
-          , str(time.localtime().tm_hour) + ":"
-          + str(time.localtime().tm_min) + ":"
-          + str(time.localtime().tm_sec))
-
-    def job_2(self):
-        print("Job2 실행: ", "| [time] "
-          , str(time.localtime().tm_hour) + ":"
-          + str(time.localtime().tm_min) + ":"
-          + str(time.localtime().tm_sec))
-        
-    def checkAsyncTimeout(self, id):
-        print("check async timeout : [ID] "+id)
+    def checkTimeout(self, checker_id, flow_job):
+        print("check timeout : [chekcer_id] "+checker_id)
+        print("check timeout : [flow_job] "+flow_job)
         print(datetime.now())
         
-        # TODO: Timeout 
-    
-    def create(self, request, *args, **kwargs):   # TODO: Apscheduler Set
+        # Timeout 처리, check_job 테이블에 STATUS = TIMEOUT으로 설정
+        check_job = CHECK_JOB.objects.get(checker_id=checker_id, flow_job=flow_job)
+        check_job.check_status = 'TIMEOUT'
+        check_job.save()
         
-        print("Test create override called")
+    
+    def create(self, request, *args, **kwargs):   # Apscheduler Set
+        
+        print('[START] Scheduler Create')
                 
         self.serializer_class = self.serializer_class
         
-        # TODO: Hooking Point
-        
-        return super().create(request, *args, **kwargs)
+        ''' 넘어오는 값
+        payload = {                
+            "check_status": "STARTED",
+            "check_start_dt": datetime.strftime(datetime.now(), '%Y-%m-%d %H:%M:%S.%f'),
+            "checker_id": service['run_job_id'],
+            "creator": "Team2",
+            "flow_job": flow_job_id,
+            "timeout": service['api_timeout']
+        }
         '''
-        
-        try:    
-            
-            # test
-            print("schedule called")
-            testFlag = True
-            if testFlag:
-                raise Exception('Test')
-            
-            # APScheduler call 하고 나머지는 그대로 입력한다.
-            
-            # date : 1번만 실행
-            # 현재 시간 + 30초(Timeout)
-            flow_id = str(datetime.now())
-            print(datetime.now())
-            
-            # Timeout Check Scheduler 등록
-            sched.add_job(self.checkAsyncTimeout, 'date', run_date=(datetime.now()+timedelta(seconds=10)), id=flow_id, args=[flow_id])
-            
-            # 정상 처리면 Timeout Check Scheduler 해제
-            #if True:
-            #    sched.remove_job(flow_id)
-            
-            # interval - 매 3조마다 실행
-            #sched.add_job(self.job, 'interval', seconds=3, id="test_2",  args=['pass_args'])
-           
-            # 즉시 실행
-            #sched.add_job(my_job, args=['text'])
-            
-            # username = request.data['username']       
-            # user = User.objects.get(username=username)
 
-            # user.is_active = False
-            # user.save() 
-           
-            response = {'message': 'schedule is done successfully', 'result': 'result__'}
-            return Response(response, status = status.HTTP_200_OK)
-            
-        except Exception as ex:
-            logger.error('Error Occured while processing schedule : %s' % ex)
-                    
-            response = {'message': 'schedule failed.'}            
-            return Response(response, status = status.HTTP_500_INTERNAL_SERVER_ERROR) 
-        '''
+        # Step1: Flow_id 및 데이터 확인(json)
+        # 예: a138634c-29d1-43cb-9e41-99dbc911e777
+        req_data = request.data
+        
+        #check_status = req_data['check_status']
+        #check_start_dt = req_data['check_start_dt']        
+        #creator = req_data['creator']
+        checker_id = req_data['checker_id']
+        flow_job = req_data['flow_job']
+        timeout = req_data['timeout']
+        
+        # Step2: Timeout Check Scheduler 등록 -> id = checker_id+flow_job => delete 시에 사용한다. 
+        sched.add_job(self.checkTimeout, 'date', run_date=(datetime.now()+timedelta(seconds=timeout)), id=checker_id+flow_job, args=[checker_id, flow_job])
+        
+        print('[END] Scheduler Create')        
+        
+        # check_job 테이블에 INSERT
+        return super().create(request, *args, **kwargs)
     
     # https://tech.serhatteker.com/post/2020-09/enable-partial-update-drf/
     # 호출시 ID를 주어야 한다. DELETE도 마찬가지
     def update(self, request, *args, **kwargs): 
         
-        print("update called")
+        print('[START] Scheduler Update')
         
         kwargs['partial'] = True
         
-        # TODO: Apscheduler Status Set
+        '''
+        payload = {                
+            "check_status": "CANCEL",
+            "check_end_dt": datetime.strftime(datetime.now(), '%Y-%m-%d %H:%M:%S.%f'),
+            "checker_id": service['run_job_id'],
+            "flow_job": flow_job_id
+        }
+        '''     
         
+        req_data = request.data
+        
+        #check_status = req_data['check_status']
+        #check_end_dt = req_data['check_end_dt']
+        checker_id = req_data['checker_id']
+        flow_job = req_data['flow_job']
+        
+        # Timeout Job Remove
+        try:
+            sched.remove_job(checker_id+flow_job)
+        except Exception as ex:
+            print('Error Occured while processing schedule : %s' % ex)          
+        
+        print('[END] Scheduler Update')
+        
+        # check_job 테이블에 update
         return super().update(request, *args, **kwargs)
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     filter_backends = [DjangoFilterBackend]
-
 

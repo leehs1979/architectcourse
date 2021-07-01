@@ -5,13 +5,13 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def index():
-    time.sleep(5)   # seconds
+    time.sleep(2)   # seconds
     #return 'Hello Flask'
     return jsonify({"result": "Hello Flask"}), 202
 
 @app.route('/', methods=['POST'])
 def index_post():
-    time.sleep(5)   # seconds
+    time.sleep(2)   # seconds
     #return 'Hello Flask'
     return jsonify({"result": "POST RESULT"}), 202
     

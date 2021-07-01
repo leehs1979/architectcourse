@@ -1,4 +1,4 @@
-<TODO> 비동기 서비스 주소를 바꿔주어야 한다. 현재 같음
+<TODO> 비동기 서비스 주소를 바꿔주어야 한다. 현재 같음 - api-sample적용시 해보자.
 
 1. 테스트 - sync1 - sync2 - async1 - sync3 : 결과 - OK
 
@@ -12,6 +12,7 @@
     "service_async_receiver_uri": "http://172.16.1.110:18082"
 }
 
+* async receive uri : http://172.16.1.110:18082/<flow_job_id>
 
 2. 테스트 - sync1 - sync2 - sync3 : 결과 - OK
 
@@ -25,6 +26,7 @@
     "service_async_receiver_uri": "http://172.16.1.110:18082"
 }
 
+============================================================================
 
 * initiator 호출 
 {
