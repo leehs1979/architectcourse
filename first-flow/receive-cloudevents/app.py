@@ -18,8 +18,9 @@ def home():
     #    f"{event['type']} and specversion {event['specversion']}"
     #)
     #message = event.data['message']
-    targetURL = event.data['targetURL']
-    targetAPI = event.data['targetAPI']
+    #targetURL = event.data['targetURL']
+    #targetAPI = event.data['targetAPI']
+    api_uri = event.data['api_uri']
     headers = event.data['headers']
     body = event.data['body']
 
@@ -30,7 +31,8 @@ def home():
     print(json_body)
 
     #response = requests.get(targetURL+targetAPI)
-    response = requests.post(targetURL+targetAPI, data=json_body, headers=headers)
+    #response = requests.post(targetURL+targetAPI, data=json_body, headers=headers)
+    response = requests.post(api_uri, data=json_body, headers=headers)
     print(response.text,flush=True)
 
     return "", 204
