@@ -49,9 +49,10 @@ class FLOW_DTL(models.Model):
     api = models.ForeignKey(API, on_delete=models.CASCADE)   # api_id
     api_seq = models.PositiveIntegerField(default=0)
     
-    api_timeout = models.PositiveIntegerField(default=10)   # second
-    api_retry = models.PositiveIntegerField(default=3)      # count
-    is_last = models.CharField(max_length=1, default='N')   # last service
+    api_timeout = models.PositiveIntegerField(default=10)       # second
+    api_retry = models.PositiveIntegerField(default=3)          # count
+    is_last = models.CharField(max_length=1, default='N')       # last service
+    skip_error = models.CharField(max_length=1, default='Y')    # skip error
     
     creator = models.CharField(max_length=50, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name="date create")
