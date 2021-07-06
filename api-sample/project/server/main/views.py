@@ -52,7 +52,8 @@ def run_callback():
 def run_sync_api(api_id):
     time.sleep(1)
     result = {
-        "api_id": api_id
+        #"api_id": api_id
+        "result": api_id
     }
     return jsonify(result), 200
 
@@ -69,7 +70,7 @@ def run_callback_api(api_id):
 
     result = {
         "task_id": task.id,
-        "api_id": api_id
+        "result": api_id
     }
 
     return jsonify(result), 202
