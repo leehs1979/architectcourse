@@ -1,6 +1,5 @@
 {
-    "targetURL" : "http://34.64.132.164:30000",    
-    "targetAPI" : "/sync_tasks/abcdevflake",
+    "api_uri" : "http://34.64.238.174:5104/sync_tasks/1234",   
     "headers" : {
         "Content-type" : "application/json",
         "Header1" : "Header1",

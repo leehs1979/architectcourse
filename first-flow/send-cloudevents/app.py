@@ -20,32 +20,26 @@ class TestEvent(Resource):
 class SyncTasks(Resource):
     def get(self):  
         req_data = request.get_json()
-        targetURL = req_data['targetURL']
-        targetAPI = req_data['targetAPI']
+        api_uri = req_data['api_uri']
         headers = req_data['headers']
         body = req_data['body']
-        print(targetURL)
-        print(targetAPI)
         print(headers)
         print(body)
 
-        res = requests.get(targetURL+targetAPI, headers=headers, data=body)
+        res = requests.get(api_uri, headers=headers, data=body)
         #print(res.json())
         return res.json()
 
     def post(self):  
         req_data = request.get_json()
-        targetURL = req_data['targetURL']
-        targetAPI = req_data['targetAPI']
+        api_uri = req_data['api_uri']
         headers = req_data['headers']
         body = req_data['body']
-        print(targetURL)
-        print(targetAPI)
         print(headers)
         print(body)
         json_data=json.dumps(body)
 
-        res = requests.post(targetURL+targetAPI, headers=headers, data=json_data)
+        res = requests.post(api_uri, headers=headers, data=json_data)
         
         return res.json()
 
