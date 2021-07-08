@@ -83,3 +83,22 @@ truncate table flowmanagerapi_api       cascade;
 ALTER TABLE flowmanagerapi_flow_dtl ADD COLUMN is_last varchar(5);
  
 ```
+
+- Drop Table
+```
+drop table auth_group                 cascade;
+drop table auth_group_permissions     cascade;
+drop table auth_permission            cascade;
+drop table auth_user                  cascade;
+drop table auth_user_groups           cascade;
+drop table auth_user_user_permissions cascade;
+drop table django_admin_log           cascade;
+drop table django_content_type        cascade;
+drop table django_migrations          cascade;
+drop table django_session             cascade;
+drop table flowmanagerapi_api         cascade;
+drop table flowmanagerapi_check_job   cascade;
+drop table flowmanagerapi_flow        cascade;
+drop table flowmanagerapi_flow_dtl    cascade;
+drop table flowmanagerapi_flow_job    cascade;
+```
