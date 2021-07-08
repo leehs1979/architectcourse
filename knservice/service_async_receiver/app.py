@@ -5,6 +5,7 @@ import flask_restful
 from flask_restx import Resource, Api
 import requests,json
 from datetime import datetime, timezone, timedelta
+import os
 
 app = Flask(__name__)
 api = Api(app)
@@ -17,7 +18,13 @@ class ServiceAsyncReceiver(Resource):
         try:
             print('[START] ASyncReceiver')
             
-            flowmanager_url = "http://127.0.0.1:28000/api/"
+            #flowmanager_url = "http://127.0.0.1:28000/api/"
+            
+            flowmanager_url = os.environ.get('FLOWMANAGER', '')
+            
+            if flowmanager_url == "":
+                print('[ERROR] There is no flowmanager_url')
+                raise Exception('There is no flowmanager_url...Fail')
             
             # Step1 : callback 리턴 데이터 확인(json) http://service_ip:port/?<flow_job_id>
             # body json - 'result'를 키로 가정한다.

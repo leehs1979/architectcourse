@@ -5,7 +5,7 @@ import flask_restful
 from flask_restx import Resource, Api
 import requests, json
 from datetime import datetime, timezone, timedelta
-import time
+import time, os
 
 app = Flask(__name__)
 api = Api(app)
@@ -19,8 +19,14 @@ class ServiceDispatcher(Resource):
         try:
             print('[START] ServiceDispatcher')
             
-            flowmanager_url = "http://127.0.0.1:28000/api/"
+            #flowmanager_url = "http://127.0.0.1:28000/api/"
+                        
+            flowmanager_url = os.environ.get('FLOWMANAGER', '')
             
+            if flowmanager_url == "":
+                print('[ERROR] There is no flowmanager_url')
+                raise Exception('There is no flowmanager_url...Fail')
+                        
             # Step1 : Flow_id 및 데이터 확인(json)
             # 예: a138634c-29d1-43cb-9e41-99dbc911e777
             req_data = request.get_json()
