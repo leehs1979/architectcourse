@@ -1,0 +1,15 @@
+apiVersion: serving.knative.dev/v1 # Current version of Knative
+kind: Service
+metadata:
+ name: svc-sender 	# The name of the app
+ namespace: flowmanager      		# The namespace the app will use
+spec:
+ template:
+  spec:
+   containers:
+   - image: leehs1979/svc-sender:v1 #jhc4guru/svc-sender:v1 으로 빌드한 이미지는 잘 되요...
+     ports:
+      - containerPort: 18081
+     env:
+      - name: FLOWMANAGER
+        value: "http://34.64.115.117:28000/api/" 
