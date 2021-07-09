@@ -1,0 +1,15 @@
+apiVersion: serving.knative.dev/v1 # Current version of Knative
+kind: Service
+metadata:
+  name: svc-async-receiver 	# The name of the app
+  namespace: flowmanager   		# The namespace the app will use
+spec:
+  template:
+    spec:
+      containers:
+        - image: leehs1979/svc-async-receiver:v1 #jhc4guru/svc-async-receiver:v1 은 잘 되요..ㅠ
+          ports:
+            - containerPort: 18082
+          env:
+            - name: FLOWMANAGER
+              value: "http://34.64.115.117:28000/api/" 
