@@ -102,3 +102,10 @@ drop table flowmanagerapi_flow        cascade;
 drop table flowmanagerapi_flow_dtl    cascade;
 drop table flowmanagerapi_flow_job    cascade;
 ```
+
+
+- Insert flow
+[insert_flow.txt](https://github.com/leehs1979/architectcourse/files/6889559/insert_flow.txt)
+- Insert api
+[insert_api.txt](https://github.com/leehs1979/architectcourse/files/6889562/insert_api.txt)
+
