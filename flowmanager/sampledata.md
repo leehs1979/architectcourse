@@ -33,12 +33,14 @@ select gen_random_uuid() as flow_dtl_id
 	  --, api_nm
       ,api_timeout
       ,3 as api_retry
-      ,'Leehs' as creator
+      ,case when ROW_NUMBER() OVER( PARTITION BY flow_nm) = flow_desc::INTEGER then 'Y' else 'N' end as is_last -- flow api개수 	  
+      ,'N' as skip_error
+	  ,'Leehs' as creator
 	  ,now() as created
 	  ,api_id
 	  ,flow_id
 	  --,'N' as is_last
-	  ,case when ROW_NUMBER() OVER( PARTITION BY flow_nm) = flow_desc::INTEGER then 'Y' else 'N' end as is_last -- flow api개수 
+	  
 from (
 	select a.flow_id
 		 , a.flow_nm
@@ -56,7 +58,8 @@ from (
 
 - 매핑 검증
 ```
-select f.flow_nm, d.api_seq, a.api_nm, d.is_last, d.api_timeout, d.api_retry
+
+select f.flow_nm, d.api_seq, a.api_nm, d.is_last, d.api_timeout, d.api_retry, d.skip_error
 from flowmanagerapi_flow f
 ,flowmanagerapi_api a
 ,flowmanagerapi_flow_dtl d
