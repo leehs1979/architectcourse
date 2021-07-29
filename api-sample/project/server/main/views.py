@@ -21,7 +21,7 @@ def run_task():
     task_type = content["type"]
     # Add Celery
     task = create_task.delay(int(task_type))
-    return jsonify({"task_id": task.id}), 202
+    return jsonify({"task_id": task.id, "result": task.id}), 202
 
 
 # Result API Call 방식 : Client에서 Polling 방식으로 상태 체크
@@ -31,7 +31,8 @@ def get_status(task_id):
     result = {
         "task_id": task_id,
         "task_status": task_result.status,
-        "task_result": task_result.result
+        "task_result": task_result.result,
+        "result": task_result.result
     }
     return jsonify(result), 200
 
@@ -44,7 +45,7 @@ def run_callback():
 
     # Add Celery
     task = receive_async_task.apply_async([callback_uri], link=[callback_task.s()]) 
-    return jsonify({"task_id": task.id}), 202
+    return jsonify({"task_id": task.id, "result": task.id}), 202
 
 
 ## add by infordb
