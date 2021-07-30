@@ -1,3 +1,38 @@
+** Ksvc 호출 : Header 
+curl -v http://34.64.137.107/ \
+-X POST \
+-H "Host: svc-sender.flowmanager.example.com" \
+-H "Content-Type: application/json" \
+-d
+'{
+    "flow_id": "a138634c-29d1-43cb-9e41-99dbc911e777",
+    "in_data": { "type": 1 },
+    "api_seq": 0,
+    "run_job_id": "test1_runtime",
+    "final_result_callback": "http://172.16.1.110:19000/callback_post",
+    "service_dispatcher_uri": "http://172.16.1.110:18081",
+    "service_async_receiver_uri": "http://172.16.1.110:18082"
+'} 
+
+
+curl -v http://34.64.137.107/ \
+-X POST \
+-H "Host: svc-sender.flowmanager.example.com" \
+-H "Content-Type: application/json" \
+-d @./first_test.json
+
+json file 내용
+{
+    "flow_id": "a138634c-29d1-43cb-9e41-99dbc911e777",
+    "in_data": { "type": "1" },
+    "api_seq": "0",
+    "run_job_id": "test1_runtime",
+    "final_result_callback": "http://172.16.1.110:19000/callback_post",
+    "service_dispatcher_uri": "http://172.16.1.110:18081",
+    "service_async_receiver_uri": "http://172.16.1.110:18082"
+} 
+
+
 <TODO> 비동기 서비스 주소를 바꿔주어야 한다. 현재 같음 - api-sample적용시 해보자.
 
 1. 테스트 - sync1 - sync2 - async1 - sync3 : 결과 - OK
