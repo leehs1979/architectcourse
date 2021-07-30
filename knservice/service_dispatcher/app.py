@@ -33,16 +33,18 @@ class ServiceDispatcher(Resource):
             print(req_data)        
             
             
-            # initiator에서 최초 넘어오는 데이터
+            # initiator에서 최초 넘어오는 데이터 : 예시
             '''
             {
                 "flow_id": "0af0714b-5896-4894-b0ce-ab02ac570608",
                 "in_data": { "type": 1 },
                 "api_seq": 0,
                 "run_job_id": "test2_runtime",
-                "final_result_callback": "http://172.16.1.110:19000/callback_post",
-                "service_dispatcher_uri": "http://172.16.1.110:18081",
-                "service_async_receiver_uri": "http://172.16.1.110:18082"
+                "final_result_callback": "http://IP:PORT/callback_post",
+                "service_dispatcher_uri": "http://IP:PORT",
+                "service_dispatcher_host": "Host: svc-sender.flowmanager.example.com",
+                "service_async_receiver_uri": "http://IP:PORT"
+                "service_async_receiver_host": "Host: svc-receiver.flowmanager.example.com",
             }
             '''
             
@@ -53,7 +55,9 @@ class ServiceDispatcher(Resource):
             final_result_callback = req_data['final_result_callback']
             
             service_dispatcher_uri = req_data['service_dispatcher_uri']
+            service_dispatcher_host = req_data['service_dispatcher_host']
             service_async_receiver_uri = req_data['service_async_receiver_uri']
+            service_async_receiver_host = req_data['service_async_receiver_host']
             
             #print('flow_id:'+flow_id)
             
@@ -246,9 +250,11 @@ class ServiceDispatcher(Resource):
                     "in_data": { "type": 1 },
                     "api_seq": 0,
                     "run_job_id": "test2_runtime",
-                    "final_result_callback": "http://172.16.1.110:19000/callback_post",
-                    "service_dispatcher_uri": "http://172.16.1.110:18081",
-                    "service_async_receiver_uri": "http://172.16.1.110:18082"
+                    "final_result_callback": "http://IP:PORT/callback_post",
+                    "service_dispatcher_uri": "http://IP:PORT",
+                    "service_dispatcher_host": "svc-sender.flowmanager.example.com",
+                    "service_async_receiver_uri": "http://IP:PORT"
+                    "service_async_receiver_host": "svc-receiver.flowmanager.example.com",
                 }
                 '''
                 # Next Service 호출이 있으면(is_last='N') api_seq = api_seq+1
@@ -265,7 +271,9 @@ class ServiceDispatcher(Resource):
                     "run_job_id": run_job_id,
                     "final_result_callback": final_result_callback,
                     "service_dispatcher_uri": service_dispatcher_uri,
-                    "service_async_receiver_uri": service_async_receiver_uri
+                    "service_dispatcher_host": service_dispatcher_host,
+                    "service_async_receiver_uri": service_async_receiver_uri,
+                    "service_async_receiver_host": service_async_receiver_host
                 }
                 
                 print(next_service_data)
@@ -279,7 +287,7 @@ class ServiceDispatcher(Resource):
                     next_service_uri = service_dispatcher_uri
                 
                 next_service_data_json = json.dumps(next_service_data)
-                headers = {'Content-Type': 'application/json; charset=utf-8'}
+                headers = {'Content-Type': 'application/json; charset=utf-8', 'Host': service_dispatcher_host}
                 
                 res = requests.post(next_service_uri, headers=headers, data=next_service_data_json)
                 print("status_code = ", res.status_code)
@@ -300,7 +308,9 @@ class ServiceDispatcher(Resource):
                     "run_job_id": run_job_id,
                     "final_result_callback": final_result_callback,
                     "service_dispatcher_uri": service_dispatcher_uri,
+                    "service_dispatcher_host": service_dispatcher_host,
                     "service_async_receiver_uri": service_async_receiver_uri,
+                    "service_async_receiver_host": service_async_receiver_host,
                     "is_last": service['is_last']       # async_receiver에서 사용한다.(현재꺼, 다음 서비스 호출여부)
                 }
                 '''
@@ -388,7 +398,9 @@ class ServiceDispatcher(Resource):
                     "run_job_id": run_job_id,
                     "final_result_callback": final_result_callback,
                     "service_dispatcher_uri": service_dispatcher_uri,
+                    "service_dispatcher_host": service_dispatcher_host,
                     "service_async_receiver_uri": service_async_receiver_uri,
+                    "service_async_receiver_host": service_async_receiver_host,
                     "is_last": service['is_last'],      # async_receiver에서 사용한다.(현재꺼, 다음 서비스 호출여부)
                     "check_job_id": check_job_id        # async_receiver에서 사용한다.(현재꺼, timeout check)
                 }
@@ -399,7 +411,7 @@ class ServiceDispatcher(Resource):
                 }            
                 
                 payload_json = json.dumps(payload)
-                headers = {'Content-Type': 'application/json; charset=utf-8'}
+                headers = {'Content-Type': 'application/json; charset=utf-8', 'Host': service_async_receiver_host}
                 flow_job_uri = "flow_job/"+flow_job_id+"/"
                 
                 res = requests.put(flowmanager_url+flow_job_uri, headers=headers, data=payload_json)
