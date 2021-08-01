@@ -342,24 +342,47 @@ class ServiceDispatcher(Resource):
                 # 서비스 호출 시에 callback uri(ASyncReceiver)에 flow_job_id를 붙여서 보낸다.
                 #      "callback" : "http://service_ip:port/<flow_job_id>" 가 리턴받을 callback_uri이다.(이대로 달라고 한다.)
                 
+                #CloudEvent Header
+                headers = {
+                'Ce-specversion': '0.3',
+                'Ce-Type': 'dev.knative.samples.t2',
+                'Ce-Source': 'dev.knative.samples/t2',
+                'Content-Type': 'application/json'
+                }
+                headers['Ce-Id']=flow_id # flow 에서 사용하는 id 로 써도 되는지 확인 필요 '536808d3-88be-4077-9d7a-a3f162705f79'
+
                 callback_uri = service_async_receiver_uri+"/?"+flow_job_id
                 print("callback_uri : ", callback_uri)
-                
-                api_in_data = {
+
+                api_in_body = {
                     "api_input": "{ type:1 }",      # TODO: 데이터 처리필요
                     "callback" : callback_uri
                 }
                 
-                api_in_data_json = json.dumps(api_in_data)
-                headers = {'Content-Type': 'application/json; charset=utf-8'} 
+                api_in_headers = {'Content-Type': 'application/json; charset=utf-8'} 
+
+                # external api 의 url, header, body 부분이 cloudevent body 로 설정 
+                api_in_data = {
+	                "api_uri" : service['api_uri'],
+                    "headers" : api_in_headers,
+                    "body" : api_in_body
+                }
+
+                #api_in_data = {
+                #    "api_input": "{ type:1 }",      # TODO: 데이터 처리필요
+                #    "callback" : callback_uri
+                #}
                 
-                print("service['api_uri'] : ", service['api_uri'])
+                api_in_data_json = json.dumps(api_in_data)
+                #headers = {'Content-Type': 'application/json; charset=utf-8'} 
+                print("api_in_data_json : ", api_in_data_json)
                 
                 # retry 구현
                 retry_count = 0
                 for retry_count in range(service['api_retry']):           
                     
-                    service_res = requests.post(service['api_uri'], headers=headers, data=api_in_data_json)
+                    #service_res = requests.post(service['api_uri'], headers=headers, data=api_in_data_json)
+                    service_res = requests.post("http://broker-ingress.knative-eventing.svc.cluster.local/default/kafka-backed-broker", headers=headers, data=api_in_data_json)
                     print("service status_code = ", service_res.status_code)    # 201 will return
                     
                     # print if status code is less than 400
