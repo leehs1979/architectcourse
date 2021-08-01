@@ -64,7 +64,7 @@ def run_callback_api(api_id):
     content = request.json
     print(content)
 
-    callback_uri = content["callback_uri"]
+    callback_uri = content["callback"]
 
     # Add Celery
     task = receive_async_task.apply_async([callback_uri], link=[callback_task.s()]) 
