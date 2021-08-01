@@ -99,8 +99,8 @@ EOF
 
 http://34.64.97.52/:30002
 
-id : team2@samsung.com
-pw : ??   
+id : team2@samsung.com   
+pw : team2     
 
 gke의 node 외부 ip는 변경될 수 있음으로 접속 안될때 확인 필요   
 kubectl get node -o wide
