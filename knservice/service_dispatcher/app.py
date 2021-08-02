@@ -37,7 +37,7 @@ class ServiceDispatcher(Resource):
             '''
             {
                 "flow_id": "0af0714b-5896-4894-b0ce-ab02ac570608",
-                "in_data": { "type": 1 },
+                "in_data": 1,   # async sleep time
                 "api_seq": 0,
                 "run_job_id": "test2_runtime",
                 "final_result_callback": "http://IP:PORT/callback_post",                    # Callback for 일반 POD TEST if is_pod_test = 'Y'
@@ -45,7 +45,7 @@ class ServiceDispatcher(Resource):
                 "service_dispatcher_host": "Host: svc-sender.flowmanager.example.com",
                 "service_async_receiver_uri": "http://IP:PORT"                              # Callback for Knative TEST if is_pod_test = 'N'
                 "service_async_receiver_host": "Host: svc-receiver.flowmanager.example.com",
-                "is_pod_test": "N"
+                "is_pod_test": "N",                
             }
             '''
             
@@ -308,7 +308,7 @@ class ServiceDispatcher(Resource):
                 '''
                 next_service_data = {
                     "flow_id": flow_id,
-                    "in_data": "",                      # async_receiver에서 설정한다.(비동기 응답 받아야 한다.)
+                    "in_data": "1",                      # async_receiver에서 설정한다.(비동기 응답 받아야 한다.)
                     "api_seq": api_seq + 1,
                     "run_job_id": run_job_id,
                     "final_result_callback": final_result_callback,
@@ -321,7 +321,7 @@ class ServiceDispatcher(Resource):
                 '''
                 
                 payload = {
-                    "api_input": "{ type:1 }",
+                    "api_input": in_data,
                     "api_output": "",    # receiver에서 사용해야 한다.
                     "api_status": "STARTED",
                     "api_start_dt": datetime.strftime(datetime.now(), '%Y-%m-%d %H:%M:%S.%f'),
@@ -346,8 +346,6 @@ class ServiceDispatcher(Resource):
                 # 대상 서비스 호출은 POST, 비동기이므로 바로 response가 온다. 
                 # 서비스 호출 시에 callback uri(ASyncReceiver)에 flow_job_id를 붙여서 보낸다.
                 #      "callback" : "http://service_ip:port/<flow_job_id>" 가 리턴받을 callback_uri이다.(이대로 달라고 한다.)
-                
-                
 
                 callback_uri = ""
                 target_uri = ""
@@ -370,7 +368,7 @@ class ServiceDispatcher(Resource):
                     headers['Ce-Id']=flow_job_id # flow 에서 사용하는 id 로 써도 되는지 확인 필요 '536808d3-88be-4077-9d7a-a3f162705f79'
                                         
                     api_in_body = {
-                        "api_input": "{ type:1 }",      # TODO: 데이터 처리필요
+                        "api_input": in_data,           # TODO: 데이터 처리필요
                         "callback" : callback_uri
                     }
                     
@@ -386,7 +384,7 @@ class ServiceDispatcher(Resource):
                 else:                    
                     callback_uri = final_result_callback+"/?"+flow_job_id
                     api_in_data = {
-                        "api_input": "{ type:1 }",      # TODO: 데이터 처리필요
+                        "api_input": in_data,      # TODO: 데이터 처리필요
                         "callback" : callback_uri
                     }
                     

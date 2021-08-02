@@ -16,8 +16,8 @@ def create_task(task_type):
     return True
 
 @celery.task(name="receive_async_task")
-def receive_async_task(url):
-    time.sleep(10)
+def receive_async_task(url, type):
+    time.sleep(int(type)*5)
     return url
 
 @celery.task(name="callback_task")
