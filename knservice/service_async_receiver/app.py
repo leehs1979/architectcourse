@@ -110,8 +110,11 @@ class ServiceAsyncReceiver(Resource):
             else: 
                 next_service_uri = next_service_data_dict['service_dispatcher_uri']
             
+            print('next_service_data_dict[service_dispatcher_host] : ')
+            print(next_service_data_dict['service_dispatcher_host'])
+            
             next_service_data_json = json.dumps(next_service_data_dict)
-            headers = {'Content-Type': 'application/json; charset=utf-8'}
+            headers = {'Content-Type': 'application/json; charset=utf-8', 'Host': next_service_data_dict['service_dispatcher_host']}
             
             res = requests.post(next_service_uri, headers=headers, data=next_service_data_json)
             print("status_code = ", res.status_code)        
