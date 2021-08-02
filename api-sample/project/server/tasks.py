@@ -1,6 +1,6 @@
 import os
 import time
-import requests
+import requests, json
 
 from celery import Celery
 
@@ -22,6 +22,21 @@ def receive_async_task(url):
 
 @celery.task(name="callback_task")
 def callback_task(url):
-    print("callback_task : "+url)
-    return requests.get(url).text
+    
+    # url = final_result_callback+"/?"+flow_job_id
+    # url = callback_uri = service_async_receiver_uri+"/?"+flow_job_id
+    print("callback_url : "+url)
+    # return requests.get(url).text
+    target_url = url.split('?')[0]
+    flow_job_id = url.split('?')[1]
+    temp_host = 'svc-async-receiver.flowmanager.example.com'
+    
+    headers = {'Content-Type': 'application/json; charset=utf-8', 'Host': temp_host}
+    
+    payload = { 
+        "flow_job_id": flow_job_id,
+        "result": "reult__"+url
+    }
+    payload_json = json.dumps(payload)
+    res = requests.post(target_url, headers=headers, data=payload_json)
 

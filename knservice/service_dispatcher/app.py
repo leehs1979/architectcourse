@@ -40,11 +40,12 @@ class ServiceDispatcher(Resource):
                 "in_data": { "type": 1 },
                 "api_seq": 0,
                 "run_job_id": "test2_runtime",
-                "final_result_callback": "http://IP:PORT/callback_post",
+                "final_result_callback": "http://IP:PORT/callback_post",                    # Callback for 일반 POD TEST if is_pod_test = 'Y'
                 "service_dispatcher_uri": "http://IP:PORT",
                 "service_dispatcher_host": "Host: svc-sender.flowmanager.example.com",
-                "service_async_receiver_uri": "http://IP:PORT"
+                "service_async_receiver_uri": "http://IP:PORT"                              # Callback for Knative TEST if is_pod_test = 'N'
                 "service_async_receiver_host": "Host: svc-receiver.flowmanager.example.com",
+                "is_pod_test": "N"
             }
             '''
             
@@ -58,6 +59,8 @@ class ServiceDispatcher(Resource):
             service_dispatcher_host = req_data['service_dispatcher_host']
             service_async_receiver_uri = req_data['service_async_receiver_uri']
             service_async_receiver_host = req_data['service_async_receiver_host']
+            
+            is_pod_test = req_data['is_pod_test']
             
             #print('flow_id:'+flow_id)
             
@@ -255,6 +258,7 @@ class ServiceDispatcher(Resource):
                     "service_dispatcher_host": "svc-sender.flowmanager.example.com",
                     "service_async_receiver_uri": "http://IP:PORT"
                     "service_async_receiver_host": "svc-receiver.flowmanager.example.com",
+                    "is_pod_test": "N"
                 }
                 '''
                 # Next Service 호출이 있으면(is_last='N') api_seq = api_seq+1
@@ -273,7 +277,8 @@ class ServiceDispatcher(Resource):
                     "service_dispatcher_uri": service_dispatcher_uri,
                     "service_dispatcher_host": service_dispatcher_host,
                     "service_async_receiver_uri": service_async_receiver_uri,
-                    "service_async_receiver_host": service_async_receiver_host
+                    "service_async_receiver_host": service_async_receiver_host,
+                    "is_pod_test": is_pod_test
                 }
                 
                 print(next_service_data)
@@ -342,39 +347,55 @@ class ServiceDispatcher(Resource):
                 # 서비스 호출 시에 callback uri(ASyncReceiver)에 flow_job_id를 붙여서 보낸다.
                 #      "callback" : "http://service_ip:port/<flow_job_id>" 가 리턴받을 callback_uri이다.(이대로 달라고 한다.)
                 
-                #CloudEvent Header
-                headers = {
-                'Ce-specversion': '0.3',
-                'Ce-Type': 'dev.knative.samples.t2',
-                'Ce-Source': 'dev.knative.samples/t2',
-                'Content-Type': 'application/json'
-                }
-                headers['Ce-Id']=flow_id # flow 에서 사용하는 id 로 써도 되는지 확인 필요 '536808d3-88be-4077-9d7a-a3f162705f79'
-
-                callback_uri = service_async_receiver_uri+"/?"+flow_job_id
-                print("callback_uri : ", callback_uri)
-
-                api_in_body = {
-                    "api_input": "{ type:1 }",      # TODO: 데이터 처리필요
-                    "callback" : callback_uri
-                }
                 
-                api_in_headers = {'Content-Type': 'application/json; charset=utf-8'} 
 
-                # external api 의 url, header, body 부분이 cloudevent body 로 설정 
-                api_in_data = {
-	                "api_uri" : service['api_uri'],
-                    "headers" : api_in_headers,
-                    "body" : api_in_body
-                }
-
-                #api_in_data = {
-                #    "api_input": "{ type:1 }",      # TODO: 데이터 처리필요
-                #    "callback" : callback_uri
-                #}
+                callback_uri = ""
+                target_uri = ""
+                headers = {}
                 
-                api_in_data_json = json.dumps(api_in_data)
-                #headers = {'Content-Type': 'application/json; charset=utf-8'} 
+                if is_pod_test != 'Y':
+                    callback_uri = service_async_receiver_uri+"/?"+flow_job_id
+                    
+                    #CloudEvent Header
+                    #headers = {
+                    #    'Ce-specversion': '0.3',
+                    #    'Ce-Type': 'dev.knative.samples.t2',
+                    #    'Ce-Source': 'dev.knative.samples/t2',
+                    #    'Content-Type': 'application/json'
+                    #}
+                    headers['Ce-specversion']='0.3'
+                    headers['Ce-Type']='dev.knative.samples.t2'
+                    headers['Ce-Source']='dev.knative.samples/t2'
+                    headers['Content-Type']='application/json'
+                    headers['Ce-Id']=flow_job_id # flow 에서 사용하는 id 로 써도 되는지 확인 필요 '536808d3-88be-4077-9d7a-a3f162705f79'
+                                        
+                    api_in_body = {
+                        "api_input": "{ type:1 }",      # TODO: 데이터 처리필요
+                        "callback" : callback_uri
+                    }
+                    
+                    # external api 의 url, header, body 부분이 cloudevent body 로 설정
+                    api_in_data = {
+                        "api_uri" : service['api_uri'],
+                        "headers" : headers,
+                        "body" : api_in_body
+                    }
+                    
+                    target_uri = "http://broker-ingress.knative-eventing.svc.cluster.local/default/kafka-backed-broker"
+                    
+                else:                    
+                    callback_uri = final_result_callback+"/?"+flow_job_id
+                    api_in_data = {
+                        "api_input": "{ type:1 }",      # TODO: 데이터 처리필요
+                        "callback" : callback_uri
+                    }
+                    
+                    #headers = {'Content-Type': 'application/json; charset=utf-8'}
+                    headers['Content-Type'] = 'application/json; charset=utf-8'                    
+                    target_uri = service['api_uri']
+                    
+                print("callback_uri : ", callback_uri)                
+                api_in_data_json = json.dumps(api_in_data)                 
                 print("api_in_data_json : ", api_in_data_json)
                 
                 # retry 구현
@@ -382,7 +403,7 @@ class ServiceDispatcher(Resource):
                 for retry_count in range(service['api_retry']):           
                     
                     #service_res = requests.post(service['api_uri'], headers=headers, data=api_in_data_json)
-                    service_res = requests.post("http://broker-ingress.knative-eventing.svc.cluster.local/default/kafka-backed-broker", headers=headers, data=api_in_data_json)
+                    service_res = requests.post(target_uri, headers=headers, data=api_in_data_json)
                     print("service status_code = ", service_res.status_code)    # 201 will return
                     
                     # print if status code is less than 400
@@ -425,7 +446,8 @@ class ServiceDispatcher(Resource):
                     "service_async_receiver_uri": service_async_receiver_uri,
                     "service_async_receiver_host": service_async_receiver_host,
                     "is_last": service['is_last'],      # async_receiver에서 사용한다.(현재꺼, 다음 서비스 호출여부)
-                    "check_job_id": check_job_id        # async_receiver에서 사용한다.(현재꺼, timeout check)
+                    "check_job_id": check_job_id,       # async_receiver에서 사용한다.(현재꺼, timeout check)
+                    "is_pod_test": is_pod_test
                 }
                 
                 payload = {

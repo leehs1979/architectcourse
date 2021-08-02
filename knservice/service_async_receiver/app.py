@@ -29,11 +29,18 @@ class ServiceAsyncReceiver(Resource):
             # Step1 : callback 리턴 데이터 확인(json) http://service_ip:port/?<flow_job_id>
             # body json - 'result'를 키로 가정한다.
             # 'flow_job_id'가 callback uri에 포함되어 있다.
-            print(request.query_string.decode())
-            flow_job_id = request.query_string.decode()        
             
-            print(request.get_json())
-            service_result = request.get_json()['result']
+            #print(request.query_string.decode())
+            #flow_job_id = request.query_string.decode()        
+            
+            #print(request.get_json())
+            #service_result = request.get_json()['result']
+            
+            req_data = request.get_json()
+            print(req_data)        
+            
+            flow_job_id = req_data['flow_job_id']
+            service_result = req_data['result']            
             
             # Step2 : flowmanager flow_job 정보를 가져온다. by flow_job_id
             flow_job_uri = "flow_job/"+flow_job_id+"/"
