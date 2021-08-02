@@ -35,12 +35,14 @@ def callback_task(url):
     # return requests.get(url).text
     target_url = url.split('?')[0]
     flow_job_id = url.split('?')[1]
-    temp_host = 'svc-async-receiver.flowmanager.example.com'
+    
+    #temp_host = 'svc-async-receiver.flowmanager.example.com'
     
     print("callback_task target_url : "+target_url)
     print("callback_task flow_job_id : "+flow_job_id)
     
-    headers = {'Content-Type': 'application/json; charset=utf-8', 'Host': temp_host}
+    #headers = {'Content-Type': 'application/json; charset=utf-8', 'Host': temp_host}
+    headers = {'Content-Type': 'application/json; charset=utf-8'}
     
     payload = { 
         "flow_job_id": flow_job_id,
