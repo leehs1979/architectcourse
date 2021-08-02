@@ -351,9 +351,9 @@ class ServiceDispatcher(Resource):
                 callback_uri = ""
                 target_uri = ""
                 headers = {}
+                callback_uri = service_async_receiver_uri+"/?"+flow_job_id
                 
-                if is_pod_test != 'Y':
-                    callback_uri = service_async_receiver_uri+"/?"+flow_job_id
+                if is_pod_test != 'Y':                    
                     
                     #CloudEvent Header
                     #headers = {
@@ -383,7 +383,7 @@ class ServiceDispatcher(Resource):
                     target_uri = "http://broker-ingress.knative-eventing.svc.cluster.local/default/kafka-backed-broker"
                     
                 else:                    
-                    callback_uri = final_result_callback+"/?"+flow_job_id
+                    
                     api_in_data = {
                         "api_input": in_data,      # TODO: 데이터 처리필요
                         "callback" : callback_uri
