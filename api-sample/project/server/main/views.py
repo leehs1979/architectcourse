@@ -62,7 +62,7 @@ def run_sync_api(api_id):
 @main_blueprint.route("/callback_tasks/<api_id>", methods=["POST"])
 def run_callback_api(api_id):
     content = request.json
-    print(content)
+    print("callback_tasks : "+content)
 
     callback_uri = content["callback"]
     api_input = content["api_input"]

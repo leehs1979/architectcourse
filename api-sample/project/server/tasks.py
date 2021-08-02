@@ -17,6 +17,10 @@ def create_task(task_type):
 
 @celery.task(name="receive_async_task")
 def receive_async_task(url, type):
+    
+    print("receive_async_task : "+url)
+    print("receive_async_task : "+type)
+    
     time.sleep(int(type)*5)
     return url
 
@@ -38,5 +42,5 @@ def callback_task(url):
         "result": "reult__"+url
     }
     payload_json = json.dumps(payload)
-    res = requests.post(target_url, headers=headers, data=payload_json)
+    return requests.post(target_url, headers=headers, data=payload_json)
 
