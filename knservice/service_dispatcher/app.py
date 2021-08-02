@@ -166,7 +166,7 @@ class ServiceDispatcher(Resource):
                 print("service['flow_dtl_id'] : "+service['flow_dtl_id'])
                 
                 payload = {
-                    "api_input": "{ type:1 }",
+                    "api_input": in_data,
                     "api_status": "STARTED",
                     "api_start_dt": datetime.strftime(datetime.now(), '%Y-%m-%d %H:%M:%S.%f'),
                     "run_job_id": service['run_job_id'],
