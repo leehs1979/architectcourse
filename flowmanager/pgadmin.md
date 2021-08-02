@@ -107,10 +107,9 @@ kubectl get node -o wide
 
 ### query
 ```
-
-##################
-flow 조회
-##################
+--##################
+--flow 조회
+--##################
 select f.flow_nm, d.api_seq, a.api_nm, d.is_last, d.api_timeout, d.api_retry, d.skip_error
 from flowmanagerapi_flow f
 ,flowmanagerapi_api a
@@ -121,9 +120,9 @@ and f.flow_nm ='flow_6_1'
 ;
 
 
-#############
-job 추적
-#############
+--#############
+--job 추적
+--#############
 select f.flow_nm, d.api_seq, a.api_nm, d.is_last, d.api_timeout, d.api_retry, d.skip_error
 ,j.run_job_id, j.api_status, j.api_start_dt, j.api_end_dt
 from flowmanagerapi_flow f
@@ -133,15 +132,15 @@ from flowmanagerapi_flow f
 where f.flow_id = d.flow_id
 and   a.api_id = d.api_id
 and   d.flow_dtl_id=j.flow_dtl_id
-and   j.run_job_id='test_runtime_0802_2'
+and   j.run_job_id='test_runtime_0802_29'
 order by j.api_start_dt
 ;
 
 
 
-#############
-job timeout checker 추적
-#############
+--#############
+--job timeout checker 추적
+--#############
 select f.flow_nm, d.api_seq, a.api_nm, d.is_last
 ,j.run_job_id, j.api_status, j.api_start_dt, j.api_end_dt
 ,cj.check_status
@@ -155,7 +154,8 @@ from flowmanagerapi_flow f
 where f.flow_id = d.flow_id
 and   a.api_id = d.api_id
 and   d.flow_dtl_id=j.flow_dtl_id
+and   j.flow_job_id=cj.flow_job_id
 and   j.run_job_id=cj.checker_id
-and   j.run_job_id='job0729-2'
+and   j.run_job_id='test_runtime_pod_0802_24'
 ;
 ```
