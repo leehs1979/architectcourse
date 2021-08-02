@@ -2,7 +2,7 @@ apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
   name: receive-cloudevent-service
-  namespace: flowmanager
+  namespace: default
 spec:
   template:
     metadata:
@@ -23,7 +23,7 @@ apiVersion: eventing.knative.dev/v1
 kind: Trigger
 metadata:
   name: receive-cloudevent-trigger
-  namespace: flowmanager
+  namespace: default
 spec:
   broker: kafka-backed-broker
   filter:
