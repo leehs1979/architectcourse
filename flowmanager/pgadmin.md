@@ -104,3 +104,58 @@ pw : team2
 
 gke의 node 외부 ip는 변경될 수 있음으로 접속 안될때 확인 필요   
 kubectl get node -o wide
+
+### query
+```
+
+##################
+flow 조회
+##################
+select f.flow_nm, d.api_seq, a.api_nm, d.is_last, d.api_timeout, d.api_retry, d.skip_error
+from flowmanagerapi_flow f
+,flowmanagerapi_api a
+,flowmanagerapi_flow_dtl d
+where f.flow_id = d.flow_id
+and   a.api_id = d.api_id
+and f.flow_nm ='flow_6_1'
+;
+
+
+#############
+job 추적
+#############
+select f.flow_nm, d.api_seq, a.api_nm, d.is_last, d.api_timeout, d.api_retry, d.skip_error
+,j.run_job_id, j.api_status, j.api_start_dt, j.api_end_dt
+from flowmanagerapi_flow f
+,flowmanagerapi_api a
+,flowmanagerapi_flow_dtl d
+,flowmanagerapi_flow_job j
+where f.flow_id = d.flow_id
+and   a.api_id = d.api_id
+and   d.flow_dtl_id=j.flow_dtl_id
+and   j.run_job_id='test_runtime_0802_2'
+order by j.api_start_dt
+;
+
+
+
+#############
+job timeout checker 추적
+#############
+select f.flow_nm, d.api_seq, a.api_nm, d.is_last
+,j.run_job_id, j.api_status, j.api_start_dt, j.api_end_dt
+,cj.check_status
+,cj.check_start_dt
+,cj.check_end_dt
+from flowmanagerapi_flow f
+,flowmanagerapi_api a
+,flowmanagerapi_flow_dtl d
+,flowmanagerapi_flow_job j
+,flowmanagerapi_check_job cj
+where f.flow_id = d.flow_id
+and   a.api_id = d.api_id
+and   d.flow_dtl_id=j.flow_dtl_id
+and   j.run_job_id=cj.checker_id
+and   j.run_job_id='job0729-2'
+;
+```
