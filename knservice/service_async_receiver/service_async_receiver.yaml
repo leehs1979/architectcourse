@@ -5,9 +5,13 @@ metadata:
   namespace: flowmanager   		# The namespace the app will use
 spec:
   template:
+    metadata:
+        annotations:
+          autoscaling.knative.dev/minScale: "1"
+          autoscaling.knative.dev/maxScale: "1"
     spec:
       containers:
-        - image: leehs1979/svc-async-receiver:v1 #jhc4guru/svc-async-receiver:v1 은 잘 되요..ㅠ
+        - image: leehs1979/svc-async-receiver:v4
           ports:
             - containerPort: 18082
           env:
