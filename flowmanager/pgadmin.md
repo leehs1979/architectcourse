@@ -97,7 +97,7 @@ EOF
 
 ### nodeport 로 외부에서 접속
 
-http://34.64.97.52/:30002
+http://34.64.97.52:30002
 
 id : team2@samsung.com   
 pw : team2     
