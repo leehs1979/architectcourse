@@ -24,8 +24,8 @@ def home():
     headers = event.data['headers']
     body = event.data['body']
 
-    print(targetURL)
-    print(targetAPI)
+    #print(targetURL)
+    #print(targetAPI)
     json_body=json.dumps(body)
     print(headers)
     print(json_body)
