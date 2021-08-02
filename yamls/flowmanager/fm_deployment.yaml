@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django
+  namespace: flowmanager
+  labels:
+    app: django
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: django-container
+  template:
+    metadata:
+      labels:
+        app: django-container
+    spec:
+      containers:
+        - name: django
+          image: leehs1979/flowmanager:v8
+          command: ['/bin/bash', 'run.sh'] # runs migrations and starts the server
+          ports:
+            - containerPort: 28000

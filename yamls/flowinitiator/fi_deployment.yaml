@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flowinitiator
+  namespace: flowmanager
+  labels:
+    app: flow-initiator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flow-initiator-container
+  template:
+    metadata:
+      labels:
+        app: flow-initiator-container
+    spec:
+      containers:
+        - name: flow-initiator
+          image: leehs1979/flowinitiator:v1
+          command: ['/bin/bash', 'run.sh'] # runs migrations and starts the server
+          ports:
+            - containerPort: 17000

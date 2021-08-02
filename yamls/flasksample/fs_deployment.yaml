@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flasksample
+  namespace: flowmanager
+  labels:
+    app: flask-sample
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-sample-container
+  template:
+    metadata:
+      labels:
+        app: flask-sample-container
+    spec:
+      containers:
+        - name: flask-sample
+          image: leehs1979/flasksample:v1
+          command: ['/bin/bash', 'run.sh'] # runs migrations and starts the server
+          ports:
+            - containerPort: 19000

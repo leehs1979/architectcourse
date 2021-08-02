@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weblb
+  labels:
+    app: web-lb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-lb-container
+  template:
+    metadata:
+      labels:
+        app: web-lb-container
+    spec:
+      containers:
+      - name: web-lb
+        image: infordb/apisample_worker:v1.0
+        args:
+          - python
+          - manage.py
+          - run
+          - --host
+          - 0.0.0.0
+          - --port
+          - "5100"
+        env:
+          - name: APP_SETTINGS
+            value: project.server.config.DevelopmentConfig
+          - name: CELERY_BROKER_URL
+            value: redis://redis:6379/0
+          - name: CELERY_RESULT_BACKEND
+            value: redis://redis:6379/0
+          - name: FLASK_DEBUG
+            value: "1"
+        ports:
+          - containerPort: 5100

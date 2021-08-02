@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: servicereceiver
+  namespace: flowmanager
+  labels:
+    app: servicereceiver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-async-receiver-container
+  template:
+    metadata:
+      labels:
+        app: service-async-receiver-container
+    spec:
+      containers:
+        - name: service-async-receiver
+          image: leehs1979/service-async-receiver:v4
+          env:
+            - name: FLOWMANAGER
+              value: "http://34.64.115.117:28000/api/"
+          ports:
+            - containerPort: 18082
+          imagePullPolicy: Always
+
+        

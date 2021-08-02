@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: servicedispatcher
+  namespace: flowmanager
+  labels:
+    app: servicedispatcher
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-dispatcher-container
+  template:
+    metadata:
+      labels:
+        app: service-dispatcher-container
+    spec:
+      containers:
+        - name: service-dispatcher
+          image: leehs1979/service-dispatcher:v4         
+          env:
+            - name: FLOWMANAGER
+              value: "http://34.64.115.117:28000/api/"
+          ports:
+            - containerPort: 18081
+          imagePullPolicy: Always 
+              

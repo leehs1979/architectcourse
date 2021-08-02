@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flow-initiator-svc
+  namespace: flowmanager
+  labels:
+    app: flow-initiator-container
+spec:
+  ports:
+  - name: http
+    port: 17000
+    targetPort: 17000
+  selector:
+    app: flow-initiator-container
+  type: LoadBalancer

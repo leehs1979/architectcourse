@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: django-container-svc
+  namespace: flowmanager
+  labels:
+    app: django-container
+spec:
+  ports:
+  - name: http
+    port: 28000
+    targetPort: 28000
+  selector:
+    app: django-container
+  type: LoadBalancer
