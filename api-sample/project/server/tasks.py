@@ -18,8 +18,8 @@ def create_task(task_type):
 @celery.task(name="receive_async_task")
 def receive_async_task(url, type):
     
-    print("receive_async_task : "+url)
-    print("receive_async_task : "+type)
+    print("receive_async_task url : "+url)
+    print("receive_async_task type : "+type)
     
     time.sleep(int(type)*5)
     return url
@@ -29,11 +29,14 @@ def callback_task(url):
     
     # url = final_result_callback+"/?"+flow_job_id
     # url = callback_uri = service_async_receiver_uri+"/?"+flow_job_id
-    print("callback_url : "+url)
+    print("callback_task url : "+url)
     # return requests.get(url).text
     target_url = url.split('?')[0]
     flow_job_id = url.split('?')[1]
     temp_host = 'svc-async-receiver.flowmanager.example.com'
+    
+    print("callback_task target_url : "+target_url)
+    print("callback_task flow_job_id : "+flow_job_id)
     
     headers = {'Content-Type': 'application/json; charset=utf-8', 'Host': temp_host}
     
