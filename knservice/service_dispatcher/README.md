@@ -34,7 +34,7 @@ Host: svc-dispatcher.flowmanager.example.com
     "final_result_callback": "http://34.64.134.132:19000/callback_post",                    
     "service_dispatcher_uri": "http://34.64.137.107",
     "service_dispatcher_host": "svc-sender.flowmanager.example.com",
-    "service_async_receiver_uri": "http://34.64.137.10/",                           
+    "service_async_receiver_uri": "http://34.64.137.10",                           
     "service_async_receiver_host": "svc-receiver.flowmanager.example.com",
     "is_pod_test": "N"               
 }
