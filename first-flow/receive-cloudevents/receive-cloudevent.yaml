@@ -2,7 +2,7 @@ apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
   name: receive-cloudevent-service
-  namespace: default
+  namespace: flowmanager
 spec:
   template:
     spec:
@@ -10,7 +10,8 @@ spec:
       -  # This corresponds to
          # https://github.com/knative/eventing-contrib/tree/main/cmd/event_display
          #image: gcr.io/knative-releases/knative.dev/eventing-contrib/cmd/event_display
-         image: jhc4guru/receive-cloudevent:latest 
+         #image: jhc4guru/receive-cloudevent:latest
+         image: leehs1979/receive-cloudevent:v1 
          ports:
           - containerPort: 8001
 ---
@@ -18,7 +19,7 @@ apiVersion: eventing.knative.dev/v1
 kind: Trigger
 metadata:
   name: receive-cloudevent-trigger
-  namespace: default
+  namespace: flowmanager
 spec:
   broker: kafka-backed-broker
   filter:
