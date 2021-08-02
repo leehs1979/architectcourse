@@ -47,5 +47,5 @@ def callback_task(url):
         "result": "reult__"+url
     }
     payload_json = json.dumps(payload)
-    return requests.post(target_url, headers=headers, data=payload_json)
+    return requests.post(target_url, headers=headers, data=payload_json).text
 
