@@ -20,7 +20,8 @@ def receive_async_task(url, type):
 #def receive_async_task(url):
     
     print("receive_async_task url : "+url)
-    print("receive_async_task type : "+type)
+    print("receive_async_task type : ")
+    print(type)
     
     if type == '' or type == None:
         type = 1
@@ -36,7 +37,8 @@ def callback_task(url, type):
     # url = final_result_callback+"/?"+flow_job_id
     # url = callback_uri = service_async_receiver_uri+"/?"+flow_job_id
     print("callback_task url : "+url)
-    print("callback_task type : "+type)
+    print("callback_task type : ")
+    print(type)
     # return requests.get(url).text
     target_url = url.split('?')[0]
     flow_job_id = url.split('?')[1]

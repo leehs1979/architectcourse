@@ -36,6 +36,7 @@ def get_status(task_id):
     }
     return jsonify(result), 200
 
+'''
 @main_blueprint.route("/callback_tasks", methods=["POST"])
 def run_callback():
     content = request.json
@@ -46,7 +47,7 @@ def run_callback():
     # Add Celery
     task = receive_async_task.apply_async([callback_uri], link=[callback_task.s()]) 
     return jsonify({"task_id": task.id, "result": task.id}), 202
-
+'''
 
 ## add by infordb
 @main_blueprint.route("/sync_tasks/<api_id>", methods=["GET"])
