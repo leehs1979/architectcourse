@@ -19,8 +19,8 @@ def create_task(task_type):
 def receive_async_task(url, indata):
 #def receive_async_task(url):
     
-    print("receive_async_task url : "+url)
-    print("receive_async_task type : "+indata)
+    print("receive_async_task url : ", url)
+    print("receive_async_task type : ", indata)
     
     if indata == '' or indata == None:
         indata = 1
@@ -35,8 +35,8 @@ def callback_task(params):
     
     # url = final_result_callback+"/?"+flow_job_id
     # url = callback_uri = service_async_receiver_uri+"/?"+flow_job_id
-    print("callback_task url : "+params['url'])
-    print("callback_task type : "+params['indata'])
+    print("callback_task url : ", params['url'])
+    print("callback_task type : ", params['indata'])
     
     # return requests.get(url).text
     target_url = params['url'].split('?')[0]
@@ -44,8 +44,8 @@ def callback_task(params):
     
     temp_host = 'svc-async-receiver.flowmanager.example.com'
     
-    print("callback_task target_url : "+target_url)
-    print("callback_task flow_job_id : "+flow_job_id)
+    print("callback_task target_url : ", target_url)
+    print("callback_task flow_job_id : ", flow_job_id)
     
     headers = {'Content-Type': 'application/json; charset=utf-8', 'Host': temp_host}
     #headers = {'Content-Type': 'application/json; charset=utf-8'}
