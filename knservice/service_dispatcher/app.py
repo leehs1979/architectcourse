@@ -271,7 +271,7 @@ class ServiceDispatcher(Resource):
                 next_service_data = {
                     "flow_id": flow_id,
                     #"in_data": out_data,
-                    "in_data": in_data,
+                    "in_data": in_data,     # 임시수정
                     "api_seq": api_seq + 1,
                     "run_job_id": run_job_id,
                     "final_result_callback": final_result_callback,
