@@ -16,32 +16,31 @@ def create_task(task_type):
     return True
 
 @celery.task(name="receive_async_task")
-def receive_async_task(url, type):
+def receive_async_task(url, indata):
 #def receive_async_task(url):
     
     print("receive_async_task url : "+url)
-    print("receive_async_task type : ")
-    print(type)
+    print("receive_async_task type : "+indata)
     
-    if type == '' or type == None:
-        type = 1
+    if indata == '' or indata == None:
+        indata = 1
     
-    time.sleep(int(type)*5)
+    time.sleep(int(indata)*5)
     
     #time.sleep(1*5)
-    return url, type
+    return {'url': url, 'indata': indata}
 
 @celery.task(name="callback_task")
-def callback_task(url, type):
+def callback_task(params):
     
     # url = final_result_callback+"/?"+flow_job_id
     # url = callback_uri = service_async_receiver_uri+"/?"+flow_job_id
-    print("callback_task url : "+url)
-    print("callback_task type : ")
-    print(type)
+    print("callback_task url : "+params['url'])
+    print("callback_task type : "+params['indata'])
+    
     # return requests.get(url).text
-    target_url = url.split('?')[0]
-    flow_job_id = url.split('?')[1]
+    target_url = params['url'].split('?')[0]
+    flow_job_id = params['url'].split('?')[1]
     
     temp_host = 'svc-async-receiver.flowmanager.example.com'
     
@@ -53,7 +52,7 @@ def callback_task(url, type):
     
     payload = { 
         "flow_job_id": flow_job_id,
-        "result": type
+        "result": params['indata']
     }
     payload_json = json.dumps(payload)
     return requests.post(target_url, headers=headers, data=payload_json).text
