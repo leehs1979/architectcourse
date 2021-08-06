@@ -11,8 +11,8 @@
 - run_job_id 관련 
 
 ```
-\<elementProp name="TC_NUM" elementType="Argument"\> 아래       
-\<stringProp name="Argument.value"\>1\</stringProp\> => 1 을 변경하여 TC 번호를 변경 
+<elementProp name="TC_NUM" elementType="Argument"> 아래       
+<stringProp name="Argument.value">1</stringProp> => 1 을 변경하여 TC 번호를 변경 
 
 test_runtime_pod_0806_TC_${TC_NUM}_${__threadNum} => 0806 을 테스트 날짜로 변경(선택사항)
 ```
@@ -20,7 +20,7 @@ test_runtime_pod_0806_TC_${TC_NUM}_${__threadNum} => 0806 을 테스트 날짜�
 - thread 갯수 관련
 
 ```
-\<stringProp name="ThreadGroup.num_threads"\>100\</stringProp\> => 동시 수행할 thread 갯수
+<stringProp name="ThreadGroup.num_threads">100</stringProp> => 동시 수행할 thread 갯수
 ```
 
 - 그 외 수정 필요 부분은 차차 수정 필요
