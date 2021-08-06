@@ -12,7 +12,7 @@
 
 -- \<stringProp name="Argument.value"\>1\</stringProp\> => 1 을 변경하여 TC 번호를 변경 
 
--- "&quot;"run_job_id"&quot;": &quot;test_runtime_pod_0806_TC_${TC_NUM}_${__threadNum} => 0806 을 테스트 날짜로 변경(선택사항)
+-- test_runtime_pod_0806_TC_${TC_NUM}_${__threadNum} => 0806 을 테스트 날짜로 변경(선택사항)
 
 - thread 갯수 관련
 
