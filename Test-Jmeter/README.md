@@ -9,10 +9,10 @@
 
 ## 수정 필요 내용
 - run_job_id 관련 
-: \<stringProp name="Argument.value"\>1\</stringProp\> => 1 을 변경하여 TC 번호를 변경 
+-- \<stringProp name="Argument.value"\>1\</stringProp\> => 1 을 변경하여 TC 번호를 변경 
 
 - thread 갯수 관련
-: <stringProp name="ThreadGroup.num_threads">100</stringProp> => 동시 수행할 thread 갯수
+-- \<stringProp name="ThreadGroup.num_threads"\>100\</stringProp\> => 동시 수행할 thread 갯수
 
 - 그 외 수정 필요 부분은 차차 수정 필요
 
