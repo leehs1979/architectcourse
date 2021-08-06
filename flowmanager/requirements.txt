@@ -11,3 +11,4 @@ tzlocal==2.1
 psycopg2==2.8.5
 pandas==1.0.3
 numpy==1.18.2
+gunicorn==20.1.0
