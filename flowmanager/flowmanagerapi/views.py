@@ -142,6 +142,9 @@ class CHECK_JOBViewSet(viewsets.ModelViewSet):
         checker_id = req_data['checker_id']
         flow_job = req_data['flow_job']
         
+        print("update : [chekcer_id] ", checker_id)
+        print("update : [flow_job] ", flow_job)
+        
         # Timeout Job Remove
         try:
             sched.remove_job(checker_id+flow_job)
