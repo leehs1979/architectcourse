@@ -12,9 +12,9 @@
 
 ```
 <elementProp name="TC_NUM" elementType="Argument"> 아래       
-<stringProp name="Argument.value">1</stringProp> => 1 을 변경하여 TC 번호를 변경 
+<stringProp name="Argument.value">1</stringProp> => TC 번호를 지정하여 다른 테스트와 구분되도록 해야 함
 
-test_runtime_pod_${__time(MMdd)}_TC_${TC_NUM}_${__threadNum} => 날짜자동 생성되도록 변경
+test_runtime_pod_${__time(MMdd)}_TC_${TC_NUM}_${__threadNum} => 날짜자동 생성되도록 함(별도 수정 불필요)
 ```
 
 - thread 갯수 관련
