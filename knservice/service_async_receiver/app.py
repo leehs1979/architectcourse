@@ -63,9 +63,11 @@ class ServiceAsyncReceiver(Resource):
             res_check_data = res_check.json()      
             check_status = res_check_data['check_status']
             
+            temp_api_status = 'SUCCESS'
             if check_status == 'TIMEOUT':
-                # TODO: FAILURE 업데이트 필요
-                raise Exception('Service is timeout...Fail')
+                # TODO: FAILURE 업데이트 필요 -> T/O되도 실행도록 수정
+                # raise Exception('Service is timeout...Fail')
+                temp_api_status = 'FAIL'
 
             # timeout 이전에 요청이 정상처리되면 check_job 해제 필요 - STATUS : STARTED, CANCEL, TIMEOUT
             payload = {                
@@ -84,7 +86,8 @@ class ServiceAsyncReceiver(Resource):
                     
             # Step4 : flowmanager에 end 시간, SUCCESS/FAILURE 전송
             payload = {
-                "api_status": "SUCCESS",
+                #"api_status": "SUCCESS",
+                "api_status": temp_api_status,
                 "api_end_dt": datetime.strftime(datetime.now(), '%Y-%m-%d %H:%M:%S.%f'),
                 "flow_dtl": res_data['flow_dtl']                  
             }
