@@ -60,14 +60,17 @@ class CHECK_JOBViewSet(viewsets.ModelViewSet):
     filterset_fields = ['check_status', 'creator']
     
     def checkTimeout(self, checker_id, flow_job):
-        print("check timeout : [chekcer_id] "+checker_id)
-        print("check timeout : [flow_job] "+flow_job)
+        print("check timeout : [chekcer_id] ", checker_id)
+        print("check timeout : [flow_job] ", flow_job)
         print(datetime.now())
         
         # Timeout 처리, check_job 테이블에 STATUS = TIMEOUT으로 설정
-        check_job = CHECK_JOB.objects.get(checker_id=checker_id, flow_job=flow_job)
-        check_job.check_status = 'TIMEOUT'
-        check_job.save()
+        try:
+            check_job = CHECK_JOB.objects.get(checker_id=checker_id, flow_job=flow_job)
+            check_job.check_status = 'TIMEOUT'
+            check_job.save()
+        except Exception as ex:
+            print('Error Occured while processing checkTimeout : %s' % ex) 
         
     
     def create(self, request, *args, **kwargs):   # Apscheduler Set
@@ -98,13 +101,22 @@ class CHECK_JOBViewSet(viewsets.ModelViewSet):
         flow_job = req_data['flow_job']
         timeout = req_data['timeout']
         
-        # Step2: Timeout Check Scheduler 등록 -> id = checker_id+flow_job => delete 시에 사용한다. 
-        sched.add_job(self.checkTimeout, 'date', run_date=(datetime.now()+timedelta(seconds=timeout)), id=checker_id+flow_job, args=[checker_id, flow_job])
+        print("create : [chekcer_id] ", checker_id)
+        print("create : [flow_job] ", flow_job)
+        print("create : [timeout] ", timeout)                
         
-        print('[END] Scheduler Create')        
+        # Step2: Timeout Check Scheduler 등록 -> id = checker_id+flow_job => delete 시에 사용한다.
+        try:
+             
+            sched.add_job(self.checkTimeout, 'date', run_date=(datetime.now()+timedelta(seconds=timeout)), id=checker_id+flow_job, args=[checker_id, flow_job])
+            
+            # check_job 테이블에 INSERT
+            return super().create(request, *args, **kwargs)
+            
+        except Exception as ex:
+            print('Error Occured while processing schedule create : %s' % ex) 
         
-        # check_job 테이블에 INSERT
-        return super().create(request, *args, **kwargs)
+        print('[END] Scheduler Create')
     
     # https://tech.serhatteker.com/post/2020-09/enable-partial-update-drf/
     # 호출시 ID를 주어야 한다. DELETE도 마찬가지
@@ -133,13 +145,14 @@ class CHECK_JOBViewSet(viewsets.ModelViewSet):
         # Timeout Job Remove
         try:
             sched.remove_job(checker_id+flow_job)
+            # check_job 테이블에 update
+            return super().update(request, *args, **kwargs)
+        
         except Exception as ex:
-            print('Error Occured while processing schedule : %s' % ex)          
+            print('Error Occured while processing schedule update : %s' % ex)          
         
-        print('[END] Scheduler Update')
+        print('[END] Scheduler Update')        
         
-        # check_job 테이블에 update
-        return super().update(request, *args, **kwargs)
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
