@@ -6,6 +6,7 @@ from flask_restx import Resource, Api
 import requests, json
 from datetime import datetime, timezone, timedelta
 import time, os
+import traceback
 
 app = Flask(__name__)
 api = Api(app)
@@ -282,7 +283,7 @@ class ServiceDispatcher(Resource):
                     "is_pod_test": is_pod_test
                 }
                 
-                print(next_service_data)
+                print("next_service_data = ", next_service_data)
                 
                 next_service_uri = ""
                 
@@ -452,7 +453,7 @@ class ServiceDispatcher(Resource):
                 payload = {
                     "api_output": json.dumps(next_service_data),                
                     "flow_dtl": service['flow_dtl_id']
-                }            
+                }
                 
                 payload_json = json.dumps(payload)
                 headers = {'Content-Type': 'application/json; charset=utf-8', 'Host': service_async_receiver_host}
@@ -468,7 +469,8 @@ class ServiceDispatcher(Resource):
             return 200
         
         except Exception as ex:
-            print('Error Occured while processing : %s' % ex)                    
+            print('Error Occured while processing : %s' % ex)
+            print('[TRACE]', traceback.format_exc())                   
             return 500
             #return Response(response, status = status.HTTP_500_INTERNAL_SERVER_ERROR)
         
