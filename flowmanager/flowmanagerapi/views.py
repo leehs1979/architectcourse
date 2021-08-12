@@ -64,7 +64,7 @@ class CHECK_JOBViewSet(viewsets.ModelViewSet):
         
         print("check timeout : [chekcer_id] ", checker_id)
         print("check timeout : [flow_job] ", flow_job)
-        print(datetime.now())
+        print("time :",datetime.now())
         
         # Timeout 처리, check_job 테이블에 STATUS = TIMEOUT으로 설정
         try:
@@ -107,7 +107,8 @@ class CHECK_JOBViewSet(viewsets.ModelViewSet):
         
         print("create : [chekcer_id] ", checker_id)
         print("create : [flow_job] ", flow_job)
-        print("create : [timeout] ", timeout)                
+        print("create : [timeout] ", timeout)
+        print("time :",datetime.now())             
         
         # Step2: Timeout Check Scheduler 등록 -> id = checker_id+flow_job => delete 시에 사용한다.
         try:
@@ -148,6 +149,7 @@ class CHECK_JOBViewSet(viewsets.ModelViewSet):
         
         print("update : [chekcer_id] ", checker_id)
         print("update : [flow_job] ", flow_job)
+        print("time :",datetime.now())
         
         # Timeout Job Remove
         try:
