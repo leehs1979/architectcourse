@@ -229,7 +229,7 @@ class ServiceDispatcher(Resource):
                 check_job_uri = "check_job/"+check_job_id+"/"
                 
                 res = requests.put(flowmanager_url+check_job_uri, headers=headers, data=payload_json)
-                res_data = res.json()
+                print('res : ', res)
                 
                 #Step 5-5: flowmanager에 end 시간, SUCCESS/FAILURE 전송
                 
@@ -246,6 +246,7 @@ class ServiceDispatcher(Resource):
                 flow_job_uri = "flow_job/"+flow_job_id+"/"
                 
                 res = requests.put(flowmanager_url+flow_job_uri, headers=headers, data=payload_json)
+                print('res : ', res)
                 
                 #Step 5-6: SUCCESS 일 경우 Next Service 호출
                 # 넘겨줘야 하는 데이터
