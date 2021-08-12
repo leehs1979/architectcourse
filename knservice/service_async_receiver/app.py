@@ -105,7 +105,7 @@ class ServiceAsyncReceiver(Resource):
             print("type(payload_json) = ", type(payload_json))
             
             res_check = requests.put(flowmanager_url+check_job_uri, headers=headers, data=payload_json)
-            res_check_data = res_check.json()        
+            #res_check_data = res_check.json()        
                     
             # Step4 : flowmanager에 end 시간, SUCCESS/FAILURE 전송
             payload = {
