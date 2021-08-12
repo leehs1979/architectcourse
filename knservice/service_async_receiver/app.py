@@ -90,11 +90,11 @@ class ServiceAsyncReceiver(Resource):
             payload = {                
                 "check_status": "CANCEL",
                 "check_end_dt": datetime.strftime(datetime.now(), '%Y-%m-%d %H:%M:%S.%f'),
-                "checker_id": res_check_data['check_job_id'],
+                "checker_id": res_check_data['checker_id'],
                 "flow_job": flow_job_id
             }
             
-            print("res_check_data['checker_id'] = ", res_check_data['check_job_id'])
+            print("res_check_data['checker_id'] = ", res_check_data['checker_id'])
             
             payload_json = json.dumps(payload)
             headers = {'Content-Type': 'application/json; charset=utf-8'}
@@ -105,7 +105,8 @@ class ServiceAsyncReceiver(Resource):
             print("type(payload_json) = ", type(payload_json))
             
             res_check = requests.put(flowmanager_url+check_job_uri, headers=headers, data=payload_json)
-            #res_check_data = res_check.json()        
+            #res_check_data = res_check.json()
+            print('res : ', res)
                     
             # Step4 : flowmanager에 end 시간, SUCCESS/FAILURE 전송
             payload = {
