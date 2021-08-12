@@ -55,9 +55,8 @@ class ServiceAsyncReceiver(Resource):
             print("type(next_service_data) = ", type(next_service_data))
             
             # str -> json 형태로 변경 TODO: CHECK 2021.08.21
-            # 기존 next_service_data_dict = json.loads(next_service_data)
-            # 변경 = 
-            next_service_data_dict = next_service_data
+            next_service_data_dict = json.loads(next_service_data)
+            
             print("next_service_data_dict = ", next_service_data_dict)
             print("type(next_service_data_dict) = ", type(next_service_data_dict))
             
