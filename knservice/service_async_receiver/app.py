@@ -52,8 +52,14 @@ class ServiceAsyncReceiver(Resource):
             # Step3 : flowmanager에서 api_output에 저장된 다음 호출 정보 등의 payload를 가져온다.
             next_service_data = res_data['api_output']
             print("next_service_data = ", next_service_data)
-            # str -> json 형태로 변경
-            next_service_data_dict = json.loads(next_service_data)
+            print("type(next_service_data) = ", type(next_service_data))
+            
+            # str -> json 형태로 변경 TODO: CHECK 2021.08.21
+            # 기존 next_service_data_dict = json.loads(next_service_data)
+            # 변경 = 
+            next_service_data_dict = next_service_data
+            print("next_service_data_dict = ", next_service_data_dict)
+            print("type(next_service_data_dict) = ", type(next_service_data_dict))
             
             # check_job STATUS가 TIMEOUT인지 확인
             check_job_id = next_service_data_dict['check_job_id']
