@@ -164,8 +164,8 @@ class ServiceDispatcher(Resource):
                 # "flow_dtl": "Leehs", service['flow_dtl_id']
                 # 오류 처리는 나중에 정상일 경우 201 리턴됨
                 
-                print("service['flow_dtl_id'] : "+service['flow_dtl_id'])
-                print("in_data : "+in_data)
+                print("service['flow_dtl_id'] : ", service['flow_dtl_id'])
+                print("in_data : ", in_data)
                 
                 payload = {
                     "api_input": in_data,
