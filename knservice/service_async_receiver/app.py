@@ -90,11 +90,11 @@ class ServiceAsyncReceiver(Resource):
             payload = {                
                 "check_status": "CANCEL",
                 "check_end_dt": datetime.strftime(datetime.now(), '%Y-%m-%d %H:%M:%S.%f'),
-                "checker_id": res_check_data['checker_id'],
+                "checker_id": res_check_data['check_job_id'],
                 "flow_job": flow_job_id
             }
             
-            print("res_check_data['checker_id'] = ", res_check_data['checker_id'])
+            print("res_check_data['checker_id'] = ", res_check_data['check_job_id'])
             
             payload_json = json.dumps(payload)
             headers = {'Content-Type': 'application/json; charset=utf-8'}
