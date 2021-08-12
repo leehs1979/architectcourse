@@ -165,6 +165,7 @@ class ServiceDispatcher(Resource):
                 # 오류 처리는 나중에 정상일 경우 201 리턴됨
                 
                 print("service['flow_dtl_id'] : "+service['flow_dtl_id'])
+                print("in_data : "+in_data)
                 
                 payload = {
                     "api_input": in_data,
@@ -179,9 +180,9 @@ class ServiceDispatcher(Resource):
                 flow_job_uri = "flow_job/"
                             
                 res = requests.post(flowmanager_url+flow_job_uri, headers=headers, data=payload_json)
-                #print("status_code = ", res.status_code)
+                print("status_code = ", res.status_code)
                 res_data = res.json()
-                #print("flow_job result = ", res_data)
+                print("flow_job result = ", res_data)
                 
                 flow_job_id = res_data['flow_job_id']
                 
