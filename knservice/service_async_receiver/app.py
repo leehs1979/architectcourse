@@ -6,6 +6,7 @@ from flask_restx import Resource, Api
 import requests,json
 from datetime import datetime, timezone, timedelta
 import os
+import traceback
 
 app = Flask(__name__)
 api = Api(app)
@@ -60,19 +61,30 @@ class ServiceAsyncReceiver(Resource):
             print("next_service_data_dict = ", next_service_data_dict)
             print("type(next_service_data_dict) = ", type(next_service_data_dict))
             
+            print("next_service_data_dict['check_job_id'] = ", next_service_data_dict['check_job_id'])
             # check_job STATUS가 TIMEOUT인지 확인
             check_job_id = next_service_data_dict['check_job_id']
             check_job_uri = "check_job/"
             
+            print("check_job_uri = ", check_job_uri)
+                                    
             res_check = requests.get(flowmanager_url+check_job_uri+check_job_id)
+            print("res_check = ", res_check)            
+            
             res_check_data = res_check.json()      
+            print("res_check_data = ", res_check_data)
+            print("type(res_check_data) = ", type(res_check_data))
+            
             check_status = res_check_data['check_status']
+            print("check_status = ", check_status)
             
             temp_api_status = 'SUCCESS'
             if check_status == 'TIMEOUT':
                 # TODO: FAILURE 업데이트 필요 -> T/O되도 실행도록 수정
                 # raise Exception('Service is timeout...Fail')
                 temp_api_status = 'FAIL'
+                
+            print("temp_api_status = ", temp_api_status)
 
             # timeout 이전에 요청이 정상처리되면 check_job 해제 필요 - STATUS : STARTED, CANCEL, TIMEOUT
             payload = {                
@@ -82,9 +94,15 @@ class ServiceAsyncReceiver(Resource):
                 "flow_job": flow_job_id
             }
             
+            print("res_check_data['checker_id'] = ", res_check_data['checker_id'])
+            
             payload_json = json.dumps(payload)
             headers = {'Content-Type': 'application/json; charset=utf-8'}
             check_job_uri = "check_job/"+check_job_id+"/"
+            
+            print("check_job_uri = ", check_job_uri)
+            print("payload_json = ", payload_json)
+            print("type(payload_json) = ", type(payload_json))
             
             res_check = requests.put(flowmanager_url+check_job_uri, headers=headers, data=payload_json)
             res_check_data = res_check.json()        
@@ -131,7 +149,8 @@ class ServiceAsyncReceiver(Resource):
             return 200   
        
         except Exception as ex:
-            print('Error Occured while processing : %s' % ex)                    
+            print('Error Occured while processing : %s' % ex)
+            print('[TRACE]', traceback.format_exc())
             return 500
             #return Response(response, status = status.HTTP_500_INTERNAL_SERVER_ERROR)
     
